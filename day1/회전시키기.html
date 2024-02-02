@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width:200px;
+            height: 200px;
+            background-color: red;
+            margin-top: 200px;
+            margin-left: 100px;
+        }
+    </style>
+    <script>
+        let n=0; //함수 호출할때마다 각도를 누적시킬 변수 
+
+        function rotate(){
+            n = n + 5; //기존 n값에 5를 더하여 다시 대입
+            let box=document.getElementById("box");
+            box.style.transform="rotate("+n+"deg)";
+            console.log("현재 각도는 ", n);
+        }    
+    </script>
+</head>
+<body>
+    <button onClick="rotate()">회전시키기</button>
+
+    <div id="box"></div>
+
+</body>
+</html>
