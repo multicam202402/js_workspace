@@ -7,9 +7,13 @@
     <script>
         //내가 원할때 실행될 수 있는 코드 영역을 브레이스{}로 감싼 후 
         //이름을 붙인 단위를 함수라 한다..
+        let count=1;
+
         function next(){
+            count = count + 1; //기존 count 값을 1증가시켜 다시 대입
+            
             let h=document.getElementById("hero");
-            h.src="../images/hero/image2.png";
+            h.src="../images/hero/image"+count+".png";
         }
     </script>
 </head>
