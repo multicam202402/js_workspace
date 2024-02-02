@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //내가 원할때 실행될 수 있는 코드 영역을 브레이스{}로 감싼 후 
+        //이름을 붙인 단위를 함수라 한다..
+        function next(){
+            let h=document.getElementById("hero");
+            h.src="../images/hero/image2.png";
+        }
+    </script>
+</head>
+<body>
+    <button onClick="next()">다음사진</button>    
+    <br>
+    <img id="hero" src="../images/hero/image1.png">
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //프로그램이 가동되자 마자, count라는 이름의 메모리 공간을 만들고
+        //초기값으로 0을 넣어두자
+        let count=0; //이 변수는 전역변수로써, 프로그램이 끝날때까지
+                            //살아있을수있다..즉 브라우저 끌때까지 살아있다
+                            //그 값이 유지될 수 잇다..
+        //아래의 코드를 무조건 실행시키지 말고, 개발자가 원할때 만
+        //실행되기 위해서는 영역을 지정 한후, 언제든지 부를 수 있도록
+        //이름을 부여해놓자 
+        function test(){ //이 영역에 test라는 이름의 코드영역(함수)를 정의
+            //alert("js 실행");
+            //카운터를 콘솔에 출력해본다 
+            //즉 버튼을 누를때마다 1, 2,3,4,5.....
+            count = count + 1;
+            console.log("카운트 값은 "+count);
+        }
+    </script>
+</head>
+<body>
+    <button onClick="test();">카운터 증가</button>
+</body>
+</html>
