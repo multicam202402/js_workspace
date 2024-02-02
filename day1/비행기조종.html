@@ -10,13 +10,24 @@
             background-image: url(../images/plane/game_bg.jpg);
             width:1280px;
             height:640px;
+            margin: auto;
+            position: relative;/*자식 때문에...명시*/
+        }
+
+        #plane{
+            width:60px;     
+            position: absolute;/*부모를 기준으로 한 위치 */       
+            left:200px;/*x축*/
+            top:150px;/*y축*/
         }
     </style>
 </head>
 <body>
     <!-- 게임의 스테이지 (무대) 역할을 할 div 사용 -->
-    <div id="wrapper"></div>
+    <div id="wrapper">
+        <img src="../images/plane/plane.png" id="plane">
+    </div>
+    
 
-    <img src="../images/plane/plane.png">
 </body>
 </html>
