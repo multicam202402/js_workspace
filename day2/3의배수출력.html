@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3배수마다 별표출력</title>
+    <style>
+        #wrapper{
+            width: 800px;
+            height: 600px;
+            background-color: aquamarine;
+            margin: auto;
+        }
+    </style>
+    <script>
+        let n=0;
+
+        //wrapper안에, 기존에 없었던 태그 중 inline 방식 중 하나인 
+        //span 태그를 생성하여 부착해 넣어본다
+        function setCount(){
+            //문서에, 동적으로 태그를 생성하기 위해서는 
+            let span = document.createElement("span"); //<span></span> 동일효과
+            //아래의 문자는 1로 고정된 것이 아니라, 1씩 증가되면서 변해야 하므로 
+            //변수로 놓아야 한다..
+            n+=1; // n++ 도 가능 
+            span.innerText=n; // <span>1</span> 과 동일
+
+            //wrapper 태그 안에 자식으로 넣기 
+            let wrappper = document.getElementById("wrapper");
+            wrapper.appendChild(span);//자식으로 추가
+        }
+    </script>
+</head>
+<body>
+    <button onClick="setCount()">카운터 증가</button>
+    <div id="wrapper">
+        <!-- span 태그는 아무런 시각적 효과가 없는, 그냥 마크업만을 위한
+        태그이다.. -->
+    </div>
+</body>
+</html>
+
+
+
+
