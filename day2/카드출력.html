@@ -25,11 +25,16 @@
         }
     </style>    
     <script>
+        let n=0;  //카드번호를 누적시킬 전역변수 
+
         //동적으로(dynamic) 즉 런타임시(실행시) 태그를 생성하여 
         //content에 부착해보자 
         function createCard(){
             let img = document.createElement("img"); //<img> 작성과 동일..
-            img.src="../images/card/h1.png";
+            n++; // n = n+1 과 동일
+            img.src="../images/card/h"+n+".png";
+            img.style.width=100+"px"; //너비 조절 
+            img.style.height=110+"px"; //높이 조절
 
             //content div에 자식 요소로 부착하자
             let content = document.getElementById("content");
