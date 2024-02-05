@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            margin: 50px; /*top, right , bottom, left 모두 50*/
+        }
+    </style>
+    <script>
+        let flag=true; //논리값을 보관할 변수 
+
+        function flip(){
+            let coin = document.getElementById("coin");
+            //삼항연산자에 조건에 올 수 있는 값은 true or false가 번갈아
+            //가며 바뀌어야 한다..
+            flag = !flag; //기존 논리값을 뒤집기!!
+            let filename=(flag)? "coin1":"coin2";
+            coin.src="../images/coin/"+filename+".webp";
+        }
+    </script>
+</head>
+<body>
+
+    <button onClick="flip()">뒤집기</button>
+    <br>
+    <img src="../images/coin/coin1.webp" id="coin">
+
+</body>
+</html>
+
+
+
+
