@@ -32,7 +32,10 @@
         function createCard(){
             let img = document.createElement("img"); //<img> 작성과 동일..
             n++; // n = n+1 과 동일
-            img.src="../images/card/h"+n+".png";
+            //img.src="../images/card/h"+n+".png";
+            //joker.png 오거나 , 아니면 h숫자.png 둘 중 하나..
+            let filename=(n%4 ==0)?  "joker.png" : "h"+n+".png"; 
+            img.src="../images/card/"+filename;
             img.style.width=100+"px"; //너비 조절 
             img.style.height=110+"px"; //높이 조절
 
