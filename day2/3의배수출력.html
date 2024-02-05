@@ -23,7 +23,9 @@
             //아래의 문자는 1로 고정된 것이 아니라, 1씩 증가되면서 변해야 하므로 
             //변수로 놓아야 한다..
             n+=1; // n++ 도 가능 
-            span.innerText=n; // <span>1</span> 과 동일
+
+            //숫자 나오는 경우,  별이 나오는 경우 
+            span.innerText=(n%8==0)? "★": n; // <span>1</span> 과 동일
 
             //wrapper 태그 안에 자식으로 넣기 
             let wrappper = document.getElementById("wrapper");
