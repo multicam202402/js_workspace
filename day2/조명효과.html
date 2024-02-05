@@ -29,15 +29,35 @@
             width:100%;
             height:100%;
             background-color: black;
-            opacity:0.7; /*0(투명) ~ 1(불투명)*/
+            opacity:0.8; /*0(투명) ~ 1(불투명)*/
         }
     </style>
+    <script>
+        let flag=false; //최초엔 불이 안들어오는 부정적 값
+
+        //스위치 이미지를 뒤집어 가면서, on.png, off.png로 교체 
+        function control(){
+            flag=!flag; //논리값 기존꺼 뒤집기
+
+            let bt = document.getElementById("bt");
+            let filename =(flag)? "on.png": "off.png";
+            bt.src="../images/room/"+filename;
+
+            //스위치 버튼에 맞는 조명처리 
+            //문서내의 light div의 투명도 값을 0 , 0.8 을 번갈아 가며 
+            //처리하자!!
+            let light = document.getElementById("light");
+            //불켜기: 0,  불끄기 0.8
+            let op=(flag)? 0 : 0.8; 
+            light.style.opacity=op;
+        }
+    </script>
 </head>
 <body>
     
     <div id="wrapper">
         <div id="aside">
-            <img src="../images/room/on.png">
+            <img src="../images/room/off.png" id="bt" onClick="control()">
         </div>        
         <div id="content">
             <div id="light">불껐을때 암흑처리..</div>
