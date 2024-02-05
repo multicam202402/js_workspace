@@ -32,14 +32,19 @@
         #content img{
             width:90%;
             height:90%;
+
+            /*css3 부터는 아주 다양한 효과가 추가됨 */
+            opacity: 1; /* 0에 가까울수록 투명, 1에 가까울수록 불투명*/
         }
 
     </style>
     <script>
-        let n=0; //횟수를 담기 위한 변수 (전역변수)
+        let n=1; //횟수를 담기 위한 변수 (전역변수)
                     //프로그램 즉 웹브라우저를 끌때까지 살아있다..
                     //계속 생명령이 유지된다면, 프로그램끝날때까지
                     //그값을 유지시킬 수도 있다.. 1,2,3,4...누적
+
+        let op=1; //투명도를 설정할 수 있는 전역변수                     
 
         //개발자가 정의하는 함수를 가리켜, 사용자정의 함수라 한다...
         function next(){
@@ -51,20 +56,48 @@
             //console.log(n+" 번 호출했어!!");
             //console.log("내가 보여줄 이미지는 m"+n+".jpg");
             console.log("../images/mt/m"+n+".jfif");
-        }        
+
+            //문서내의 큰 이미지의 경로를 교체해보자 
+            let photo=document.getElementById("photo");
+            photo.src="../images/mt/m"+n+".jfif";
+        } 
+        
+        //이전 사진 보여주기 
+        function prev(){
+            n = n-1;
+            //문서내의 photo라는 이미지의 src를 교체...
+            let photo=document.getElementById("photo");
+            photo.src="../images/mt/m"+n+".jfif";            
+        }
+
+        //투명하게...
+        function alphaPlus(){
+            //문서내의 photo라는 이미지에 대해, 
+            //opacity 스타일 속성을 0에 가깝게 감소
+            op = op - 0.1;
+            let photo=document.getElementById("photo");
+            photo.style.opacity=op;
+        }
+
+        //불투명하게 
+        function alphaMinus(){
+            op = op + 0.1;
+            let photo=document.getElementById("photo");
+            photo.style.opacity=op;
+        }
     </script>
 </head>
 <body>
     
     <div id="wrapper">
         <div id="header">
-            <button>이전</button>
-            <button>투명하게</button>
-            <button>불투명하게</button>
+            <button onClick="prev()">이전</button>
+            <button onClick="alphaPlus()">투명하게</button>
+            <button onClick="alphaMinus()">불투명하게</button>
             <button onClick="next()">다음</button>            
         </div>
         <div id="content">
-            <img src="../images/mt/m1.jfif"> 
+            <img src="../images/mt/m1.jfif" id="photo"> 
         </div>
     </div>
 
