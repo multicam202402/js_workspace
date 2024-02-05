@@ -14,12 +14,15 @@
         }
     </style>
     <script>
-        let flag=true; //논리값을 선언
+        let flag=false; //논리값을 선언
         
         //wrapper의 배경색을 red, yellow 을 번갈아가며 교체 
         function setBg(){
             let wrapper = document.getElementById("wrapper");
-            wrapper.style.backgroundColor="red";
+            //삼항연산자가 값을 처리하기 전에, 기존 값을 뒤집기!!
+            flag = !flag;//뒤집기
+            let bg=(flag)? "red":"yellow";
+            wrapper.style.backgroundColor=bg;
         }
 
     </script>
