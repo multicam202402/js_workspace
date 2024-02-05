@@ -11,13 +11,49 @@
             background-color: yellow;     
             margin: auto;
         }
+        #header{
+            width: 100%;
+            height:100px;
+            background-color: aqua;
+            text-align: center; /* div 내의 컨텐트의 가운데 정렬*/
+            line-height: 100px;
+        }
+        #content{
+            width:100%;
+            height:500px;
+            background-color: bisque;
+            text-align: center; /*수평정렬*/
+            line-height: 500px;
+        }
+        
+        /*content 안에 있는 이미지에 대한 css
+            content  img  : content 라는 선택자 내부의 자식 중 img 태그에..
+        */
+        #content img{
+            width:90%;
+            height:90%;
+        }
+
     </style>
+    <script>
+        //개발자가 정의하는 함수를 가리켜, 사용자정의 함수라 한다...
+        function next(){
+            console.log("호출했어!!");
+        }        
+    </script>
 </head>
 <body>
     
     <div id="wrapper">
-        <div id="header"></div>
-        <div id="content"></div>
+        <div id="header">
+            <button>이전</button>
+            <button>투명하게</button>
+            <button>불투명하게</button>
+            <button onClick="next()">다음</button>            
+        </div>
+        <div id="content">
+            <img src="../images/mt/m1.jfif"> 
+        </div>
     </div>
 
 </body>
