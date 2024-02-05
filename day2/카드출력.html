@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width:900px;
+            height:700px;
+            background-color: yellow;
+            margin: auto;
+        }
+        #aside{
+            width:100px;
+            height:700px;
+            background-color: aqua;
+            float:left;
+        }
+        #content{
+            width:800px;
+            height: 700px;
+            background-color: bisque;
+            float:left;
+        }
+    </style>    
+    <script>
+        //동적으로(dynamic) 즉 런타임시(실행시) 태그를 생성하여 
+        //content에 부착해보자 
+        function createCard(){
+            let img = document.createElement("img"); //<img> 작성과 동일..
+            img.src="../images/card/h1.png";
+
+            //content div에 자식 요소로 부착하자
+            let content = document.getElementById("content");
+            content.appendChild(img); // <div><img src=''></div>  과 동일
+
+        }
+    </script>
+</head>
+<body>
+    
+    <div id="wrapper">
+        <div id="aside">
+            <button onClick="createCard()">카드 출력</button>
+        </div>
+        <div id="content"></div>
+    </div>
+
+</body>
+</html>
