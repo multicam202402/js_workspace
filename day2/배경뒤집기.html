@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width:500px;
+            height: 500px;
+            /*3개만 적으면 6개의 동일한 값으로 인정*/
+            background-color: #ccc; 
+            margin: auto;
+        }
+    </style>
+    <script>
+        let flag=true; //논리값을 선언
+        
+        //wrapper의 배경색을 red, yellow 을 번갈아가며 교체 
+        function setBg(){
+            let wrapper = document.getElementById("wrapper");
+            wrapper.style.backgroundColor="red";
+        }
+
+    </script>
+</head>
+<body>
+    <button onClick="setBg()">배경뒤집기</button>
+    <div id="wrapper"></div>
+
+</body>
+</html>
