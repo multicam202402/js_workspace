@@ -19,6 +19,8 @@
         let img; //우주선을 가리키던 img 변수는 전역변수일 경우, 
                     //프로그램 실행 하는 동안 계속 제어 가능..
         let bgX=0; //배경의 x축 값을 결정짓는 전역변수 (계속 -를 누적)
+        let x=50; //우주선의  x좌표
+        let y=200; //우주선의 y좌표 
 
         //키보드를 누르면, 적절한 위치를 설정하자
         function move(){
@@ -32,12 +34,41 @@
             //console.log("내가 누른 키의 아스키값은 " , event.keyCode);
 
             //37 좌측으로.... 
-
+            if(event.keyCode==37){
+                x -=5; //x = x - 5;
+                img.style.left=x+"px";
+            }
             //39 우측으로... 
             if(event.keyCode==39){ //우측키를 눌렀다면...
-                img.style.left=300+"px";
+                x+=5; // x = x +5;
+                img.style.left=x+"px";
             }
 
+            //38 위로... 
+            if(event.keyCode==38){
+                y -= 5; 
+                img.style.top = y+"px";
+            }
+
+            //40 아래로..
+            if(event.keyCode==40){
+                y += 5; // y = y+5;
+                img.style.top=y+"px";
+            }
+
+        }
+
+        //키보드에 대한 조건처리를 switch~case문으로 처리 
+        function move2(){
+            //아스키 코드를 대상으로 case by case 따져본다
+            switch(event.keyCode){
+                case 37: x-=5;break; //left
+                case 39: x+=5;break; //right
+                case 38: y-=5;break; //top
+                case 40: y+=5 ;break; //bottom
+            }
+            img.style.left=x+"px";
+            img.style.top=y+"px";
         }
 
         //게임의 모든 요소가 움직이려면, 엔진이 가동되어 잇어야 한다..
@@ -72,7 +103,7 @@
         }
     </script>
 </head>
-<body onLoad="init()" onKeyDown="move()">
+<body onLoad="init()" onKeyDown="move2()">
     <div id="wrapper"></div>
 </body>
 </html>
