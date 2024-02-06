@@ -1,0 +1,24 @@
+<script>
+let n = prompt("당신의 점수를 입력하세요");    
+
+/*
+90 이상: 최우수 
+89 ~ 80 : 우수 
+79 ~ 70 : 양호 
+69 ~ 60 : 노력을 요함
+59 이하 : 재시험
+*/
+
+if(n >=90){
+    document.write("최우수");
+}else if(n >=80){
+    document.write("우수");
+}else if(n>=70){
+    document.write("양호");
+}else if(n>=60){
+    document.write("노력을 요함");
+}else{ //60 미만은 모두~~~~
+    document.write("재시험 대상입니다");
+}
+
+</script>

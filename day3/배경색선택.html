@@ -1,0 +1,45 @@
+<body>
+</body> 
+
+<script>
+let n = prompt("색상을 선택하세요\n1.빨 2.주 3.노  4.초  5.파  6.남 7.보");
+
+//문서의 배경색을 제어 
+//7가지 경우의 수에 따라 변수값을 다르게 할당 
+let bg;
+/*
+if(n==1){
+    bg="red";
+}else if(n==2){
+    bg="orange";    
+}else if(n==3){
+    bg="yellow";
+}else if(n==4){
+    bg="green";
+}else if(n==5){
+    bg="blue";
+}else if(n==6){
+    bg="navy";
+}else if(n==7){
+    bg="purple";
+}else{
+    document.write("잘못선택하셨습니다");
+} 
+*/
+
+n  = parseInt(n); //문자열을 정수로 변환
+
+switch(n){
+    case 1:bg="red";break;
+    case 2:bg="orange";break;
+    case 3:bg="yellow";break;
+    case 4:bg="green";break;
+    case 5:bg="blue";break;
+    case 6:bg="navy";break;
+    case 7:bg="purple";break;
+    default:document.write("똑바로 하세요");
+}
+
+document.body.style.background=bg; 
+</script>
+   

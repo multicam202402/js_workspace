@@ -1,0 +1,17 @@
+<script>
+//다중적 조건을 판단할때 사용되는 else~ if문 대신 switch~case문을
+//이용할 수 있다 
+
+let n = prompt("부서입력"); // 10, 20, 30 , 40, 50
+
+n=parseInt(n);//지정한 문자열을 정수화   "5" 를   정수5로 변환
+
+switch(n){ //조건 판단 대상값을 소괄호에 넣자
+    case 10:document.write("영업부서");break;
+    case 20:document.write("마케팅부서");break;
+    case 30:document.write("인사부서");break;
+    default: document.write("존재하는 부서만 넣으세요"); //else문과 동일
+}
+
+
+</script>
