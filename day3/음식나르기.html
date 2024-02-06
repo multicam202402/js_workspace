@@ -30,6 +30,8 @@
             food.style.left=300+"px";
             food.style.top=200+"px";
             food.style.width=180+"px";
+            //접시보다 늦게 생성된 닭다리의 레이어 즉 z-index를 높여보자 
+            food.style.zIndex=100;
         }
 
         //사용자가 마우스를 움직이는 동안, 해당 마우스의 좌표를 구해보자
@@ -49,14 +51,29 @@
                 let food = document.getElementById("food");
                 food.style.left=(x-90) +"px";
                 food.style.top=(y-90)+"px";
+                
+            }
+        }
+
+        //기존의 flag 뒤집기
+        //드래그할때는 테두리, 내려놓으면 테두기 없애기
+        function effect(){
+            flag = !flag;
+
+            //시각적 효과를 부여하자 
+            if(flag==true){ //드래그할때는
+                food.style.border="10px solid red";
+            }else{
+                food.style.border="0px";
             }
         }
     </script>        
 </head>
 <body onLoad="init();"  onMouseMove="getMouseXY()">
     <div id="wrapper">
-        <img src="../images/chicken.webp" id="food" onClick="flag=!flag;">
-
+        
+        <img src="../images/chicken.webp" id="food" onClick="effect()">
+        
         <img src="../images/dish.webp" id="dish">
     </div>
 </body>
