@@ -20,6 +20,9 @@
         }
     </style>
     <script>
+        //닭다리가 움직일지 말지를 결정짓는 전역변수
+        let flag=false;
+
         //프로그램이 가동되자 마자 통닭다리의 스타일 변경 
         function init(){
             let food = document.getElementById("food");
@@ -42,15 +45,17 @@
 
             //실시간으로 얻어진 마우스 좌표와 치킨의 left, top 값을 일치
             //시킨 다면, 치킨 이미지는 마우스를 따라다니는 효과발생 
-            let food = document.getElementById("food");
-            food.style.left=x+"px";
-            food.style.top=y+"px";
+            if(flag){
+                let food = document.getElementById("food");
+                food.style.left=(x-90) +"px";
+                food.style.top=(y-90)+"px";
+            }
         }
     </script>        
 </head>
 <body onLoad="init();"  onMouseMove="getMouseXY()">
     <div id="wrapper">
-        <img src="../images/chicken.webp" id="food">
+        <img src="../images/chicken.webp" id="food" onClick="flag=!flag;">
 
         <img src="../images/dish.webp" id="dish">
     </div>
