@@ -16,7 +16,29 @@
     </style>
     <script>
         let wrapper;
+        let img; //우주선을 가리키던 img 변수는 전역변수일 경우, 
+                    //프로그램 실행 하는 동안 계속 제어 가능..
         let bgX=0; //배경의 x축 값을 결정짓는 전역변수 (계속 -를 누적)
+
+        //키보드를 누르면, 적절한 위치를 설정하자
+        function move(){
+            //상,하, 좌, 우 키패드를 누르면 각각 알맞는 위치 설정 
+            //사용자가 클릭, 마우스움직이던, 키보드를 모든 이벤트 발생 상황
+            //에는 내부적으로 event 객체가 생성된다.. 
+            //console.log(event);
+
+            //event 객체는 이벤트의 정보를 담고 있으므로, 만일 키보드이벤트를
+            //발생시켰다면, 키보드와 관련된 많은 정보가 event 객체에 들어있다.
+            //console.log("내가 누른 키의 아스키값은 " , event.keyCode);
+
+            //37 좌측으로.... 
+
+            //39 우측으로... 
+            if(event.keyCode==39){ //우측키를 눌렀다면...
+                img.style.left=300+"px";
+            }
+
+        }
 
         //게임의 모든 요소가 움직이려면, 엔진이 가동되어 잇어야 한다..
         //사람으로 비유하자면 심장이 뛰는것과 같다..
@@ -34,7 +56,7 @@
             wrapper = document.getElementById("wrapper");//div
 
             //우주선 동적(dynamic, runtime 실행시) 생성 
-            let img = document.createElement("img"); // <img> 동일
+            img = document.createElement("img"); // <img> 동일
             img.src="../images/plane/plane.png"; // <img src=''> 동일
             img.style.width=90+"px";
             img.style.position="absolute"; //부모를 기준으로 한 위치
@@ -50,7 +72,7 @@
         }
     </script>
 </head>
-<body onLoad="init()">
+<body onLoad="init()" onKeyDown="move()">
     <div id="wrapper"></div>
 </body>
 </html>
