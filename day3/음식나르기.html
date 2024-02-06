@@ -25,10 +25,30 @@
             let food = document.getElementById("food");
             food.style.position="absolute";
             food.style.left=300+"px";
+            food.style.top=200+"px";
+            food.style.width=180+"px";
+        }
+
+        //사용자가 마우스를 움직이는 동안, 해당 마우스의 좌표를 구해보자
+        function getMouseXY(){
+            console.log("당신 지금 마우스 움직이는 중이죠?");
+            //마우스의 좌표 정보를 추출하려면, 시스템이 알고있는 이벤트 
+            //정보를 얻어와 하는데, js에서는 사용자가 이벤트를 일을킬때마다
+            //메모리에  event 라는 객체가 올라간다..따라서 이 event  객체를
+            //이용하여 원하는 정보를 얻어내자! 
+            let x = event.clientX; //x축 (left 값)
+            let y = event.clientY; //y축 (top 값)
+            console.log("x축:"+x+" , y축:"+y);
+
+            //실시간으로 얻어진 마우스 좌표와 치킨의 left, top 값을 일치
+            //시킨 다면, 치킨 이미지는 마우스를 따라다니는 효과발생 
+            let food = document.getElementById("food");
+            food.style.left=x+"px";
+            food.style.top=y+"px";
         }
     </script>        
 </head>
-<body onLoad="init();">
+<body onLoad="init();"  onMouseMove="getMouseXY()">
     <div id="wrapper">
         <img src="../images/chicken.webp" id="food">
 
