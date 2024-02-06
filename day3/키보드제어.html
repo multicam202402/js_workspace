@@ -10,22 +10,43 @@
             height: 640px;
             margin: auto;
             background-image: url(../images/plane/game_bg.jpg);
+            position: relative; /*자식이 명시하면 부모도 명시해야 함.*/
+            background-position:0px 0px;
         }
     </style>
     <script>
+        let wrapper;
+        let bgX=0; //배경의 x축 값을 결정짓는 전역변수 (계속 -를 누적)
+
+        //게임의 모든 요소가 움직이려면, 엔진이 가동되어 잇어야 한다..
+        //사람으로 비유하자면 심장이 뛰는것과 같다..
+        function gameLoop(){
+            //console.log("gameLoop called...");
+            //배경의 x 좌표를 음수값으로 누적시키자
+            bgX--; // bgX = bgX - 1; 동일한 표현
+            wrapper.style.backgroundPosition=bgX+"px  0px";
+        }
+        
         //프로그램이 가동되면, 초기화 작업을 진행하자 
         //1) 우주선을 동적으로 생성하여 wrapper 에 부착
-
         function init(){
             //wrapper는 문서에 이미 존재하기 때문에 get~~ 얻어온다
-            let wrapper = document.getElementById("wrapper");//div
+            wrapper = document.getElementById("wrapper");//div
 
             //우주선 동적(dynamic, runtime 실행시) 생성 
             let img = document.createElement("img"); // <img> 동일
             img.src="../images/plane/plane.png"; // <img src=''> 동일
+            img.style.width=90+"px";
+            img.style.position="absolute"; //부모를 기준으로 한 위치
+            img.style.left=50+"px"; //x축으로 50px 에 놓기
+            img.style.top=200+"px"; //y축으로 200px 에 놓기
 
             //부모 즉 컨테이너 요소에 img를 부착하자 
             wrapper.appendChild(img);
+
+            //일정 시간 간격으로 끝없이 게임루프를 호출해주자 
+            //이 시점부터 10/1000 초 간격으로 끝없이 gameLoop() 호출.. 
+            setInterval("gameLoop()", 10);
         }
     </script>
 </head>
