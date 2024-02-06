@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 700px;
+            height: 300px;
+            background-color: yellow;
+            margin: auto;
+            border-radius: 3%;
+        }
+        #content{
+            font-size:40px;
+            text-align: center;
+            height: 200px;
+            background-color: aqua;
+            line-height: 200px;
+        }
+        .box{
+            width:130px;
+            height:130px;   
+            font-size:50px;   
+            text-align: right;
+        }
+        #footer{
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        /*footer id를 갖는 요소의 자식중 button 태그에 대해..*/
+        #footer button{
+            width:100px;
+            height:50px;
+        }
+    </style>
+    <script>
+        //프로그램이 가동됨과 동시에 하고싶은 작업 처리...
+        function init(){
+            let hh = document.getElementById("hh");
+            let mm = document.getElementById("mm");
+            let ss = document.getElementById("ss");
+
+            hh.value=0; //시 초기화
+            mm.value=0; //시 초기화
+            ss.value=0; //시 초기화
+        }
+    </script>
+</head>
+<body onLoad="init()">
+
+    <div id="wrapper">
+        <div id="content">
+            <input type="text" class="box" id="hh">시
+            <input type="text" class="box" id="mm">분
+            <input type="text" class="box" id="ss">초
+        </div>
+        <div id="footer">
+            <button>Start</button>
+            <button>Stop</button>
+            <button>수동</button>
+        </div>
+    </div>
+    
+</body>
+</html>
