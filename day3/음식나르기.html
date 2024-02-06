@@ -19,8 +19,16 @@
             height: 400px;
         }
     </style>
+    <script>
+        //프로그램이 가동되자 마자 통닭다리의 스타일 변경 
+        function init(){
+            let food = document.getElementById("food");
+            food.style.position="absolute";
+            food.style.left=300+"px";
+        }
+    </script>        
 </head>
-<body>
+<body onLoad="init();">
     <div id="wrapper">
         <img src="../images/chicken.webp" id="food">
 
@@ -28,3 +36,5 @@
     </div>
 </body>
 </html>
+
+
