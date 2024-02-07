@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 700px;
+            height: 500px;
+            margin: auto;
+            background-color: grey;
+        }
+        #header div{
+            width: 100px;
+            height: 100px;
+            float:left;
+        }
+        #content{
+            width:100%;
+            height: 400px;
+            background-color: black;
+            clear:both; /*다른 block 요소가 float 되었을때 그 float에 영향X*/
+        }
+    </style>
+    <script>
+        function rollOver(){
+            console.log("마우스 올려놓았어?");
+        }
+    </script>
+</head>
+<body>
+    
+    <div id="wrapper">
+        <div id="header">
+            <div onMouseOver="rollOver()" style="background-color: red;"></div>
+            <div style="background-color: orange;"></div>
+            <div style="background-color: yellow;"></div>
+            <div style="background-color: green;"></div>
+            <div style="background-color: blue;"></div>
+            <div style="background-color: navy;"></div>
+            <div style="background-color: purple;"></div>
+        </div>
+        <div id="content"></div>
+    </div>
+
+</body>
+</html>
