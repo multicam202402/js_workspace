@@ -24,8 +24,15 @@
         }
     </style>
     <script>
-        function rollOver(){
-            console.log("마우스 올려놓았어?");
+        //외부로부터 변수값을 전달받아, 내부에서 사용하기 위해 
+        //함수의 매개변수를 정의할 수 있다.. 
+        //매개변수 사용 시 장점?  함수의 수를 줄여 준다...(여러개 정의 X)
+        //호출 시 알맞는 데이터형을 넘겨줘야 함 rollOver("red");
+        function rollOver(bg){
+            //console.log("마우스 올려놓았어?");
+            //content 라는 div의 배경색을 해당 색상으로 변경 
+            let content = document.getElementById("content");
+            content.style.backgroundColor=bg;  // "red"
         }
     </script>
 </head>
@@ -33,13 +40,13 @@
     
     <div id="wrapper">
         <div id="header">
-            <div onMouseOver="rollOver()" style="background-color: red;"></div>
-            <div style="background-color: orange;"></div>
-            <div style="background-color: yellow;"></div>
-            <div style="background-color: green;"></div>
-            <div style="background-color: blue;"></div>
-            <div style="background-color: navy;"></div>
-            <div style="background-color: purple;"></div>
+            <div onMouseOver="rollOver('red')" style="background-color: red;"></div>
+            <div onMouseOver="rollOver('orange')" style="background-color: orange;"></div>
+            <div onMouseOver="rollOver('yellow')"  style="background-color: yellow;"></div>
+            <div onMouseOver="rollOver('green')"  style="background-color: green;"></div>
+            <div onMouseOver="rollOver('blue')"  style="background-color: blue;"></div>
+            <div onMouseOver="rollOver('navy')"  style="background-color: navy;"></div>
+            <div onMouseOver="rollOver('purple')"  style="background-color: purple;"></div>
         </div>
         <div id="content"></div>
     </div>
