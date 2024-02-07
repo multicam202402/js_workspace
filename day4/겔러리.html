@@ -36,28 +36,30 @@
         }
     </style>
     <script>
-        function rollOver(){
+        //rollOver("m1.jfif");
+        function rollOver(filename){
             //문서내의 큰 이미지의 src를 , 지금 선택한 두번째 이미지파일로 교체
             //id를 부여하지 않고도, css 선택자를 이용하여 이미지 접근 
             let pic = document.querySelector("#content img");
-            pic.src="../images/mt/m2.jfif";
+            pic.src="../images/mt/"+filename;
         }
+
     </script>
 </head>
 <body>
     
     <div id="wrapper">
         <div id="aside">
-            <img src="../images/mt/m1.jfif">
-            <img src="../images/mt/m2.jfif" onClick="rollOver()">
-            <img src="../images/mt/m3.jfif">
-            <img src="../images/mt/m4.jfif">
-            <img src="../images/mt/m5.jfif">
-            <img src="../images/mt/m6.jfif">
-            <img src="../images/mt/m7.jfif">
-            <img src="../images/mt/m8.jfif">
-            <img src="../images/mt/m9.jfif">
-            <img src="../images/mt/m10.jfif">
+            <img src="../images/mt/m1.jfif" onClick="rollOver('m1.jfif')">
+            <img src="../images/mt/m2.jfif" onClick="rollOver('m2.jfif')">
+            <img src="../images/mt/m3.jfif" onClick="rollOver('m3.jfif')">
+            <img src="../images/mt/m4.jfif" onClick="rollOver('m4.jfif')">
+            <img src="../images/mt/m5.jfif" onClick="rollOver('m5.jfif')">
+            <img src="../images/mt/m6.jfif" onClick="rollOver('m6.jfif')">
+            <img src="../images/mt/m7.jfif" onClick="rollOver('m7.jfif')">
+            <img src="../images/mt/m8.jfif" onClick="rollOver('m8.jfif')">
+            <img src="../images/mt/m9.jfif" onClick="rollOver('m9.jfif')">
+            <img src="../images/mt/m10.jfif" onClick="rollOver('m10.jfif')">
         </div>
         <div id="content">
             <img src="../images/mt/m1.jfif">
