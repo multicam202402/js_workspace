@@ -14,10 +14,24 @@
         
         //document.write(" 영희가 나한테 말했다 \"야 이 바보야\" ");                       
         
-        let tag="<table width=\"400px\" border=\"1px\">";
-        tag = tag + "<tr>";
+        let f = parseInt(prompt("원하시는 층수 입력"));
+        let ho = parseInt(prompt("원하시는 호수 입력"));
+        let b=parseInt(prompt("건물두께 입력"));
 
-        console.log(tag);                    
+        let tag="<table  border=\""+b+"px\">";
+        for(let i=f;i>=1;i--){ //층 수 결정
+            tag = tag + "<tr>";
+
+                for(let j=1; j<=ho;j++){ //호실의 수 결정
+                    tag = tag + "<td>"+ i +"층 "+j+"호</td>";
+                }        
+
+            tag = tag + "</tr>";
+        }
+        tag = tag + "</table>";
+
+        //console.log(tag);                    
+        document.write(tag);
         
 
     </script>
