@@ -35,11 +35,11 @@
             //js에서 만들었기 때문에, 이벤트 또한 js에서 연결해야 한다 
             box.addEventListener("mouseover", function(){
                 console.log("마우스 올렸어?");
-                box.style.left=0+"px";
+                targetX=0;
             });
             box.addEventListener("mouseout", function(){
                 console.log("마우스 벗어났어?");
-                box.style.left=-170+"px";
+                targetX=-170;
             });
 
             //wrapper에 부착 
