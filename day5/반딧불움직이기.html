@@ -11,13 +11,22 @@
             background-image: url(../images/mt/m1.jfif);
             background-size:1000px  900px ;
             margin: auto;
+            position: relative;
         }
     </style>
     <script>
         
         function init(){
             //반딧불 이미지를 생성하여 원하는 위치에 두자
-            document.createElement("img");
+            let firefly = document.createElement("img"); // <img>
+            firefly.src="../images/firefly.webp";
+
+            firefley.style.position="absolute";
+            firefly.style.top=0+"px";
+            firefly.style.left=0+"px";
+
+            let wrapper = document.getElementById("wrapper");
+            wrapper.appendChild(firefly);
         }
 
         addEventListener("load", function(){
