@@ -23,6 +23,7 @@
         //나위치 = 현나위치 + a*(목표 - 현나위치)
         function move(){
             firefly.style.left = parseInt(firefly.style.left)+a*(targetX - parseInt(firefly.style.left))+"px";
+            firefly.style.top = parseInt(firefly.style.top)+a*(targetY - parseInt(firefly.style.top))+"px";
         }   
 
         function init(){
