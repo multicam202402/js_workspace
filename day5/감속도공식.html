@@ -10,18 +10,32 @@
             height: 900px;
             margin: auto;
             background-color: yellow;
+            position: relative;
         }
     </style>
     <script>
+        let img; //모든 함수 및 영역에서 접근할 수 있도록 전역변수로 선언
+
         //이미지를 생성하여 화면에 부착 
         function createImg(){
             console.log("이미지 만들예정");
-            let img = document.createElement("img");// <img> 동일 
+            img = document.createElement("img");// <img> 동일 
             img.src="../images/plane/plane.png"; // <img src=""> 동일
+            img.style.width=50+"px";
+            img.style.position="absolute"; //부모인 wrapper을 기준으로 한 위치
+            img.style.left=0+"px"; //x축 
+            img.style.top=0+"px"; //y축 
             
             let wrapper = document.getElementById("wrapper");
             //생성된 이미지를 wrapper 자식으로 부착하자 
             wrapper.appendChild(img);
+        }
+
+        //이미지의 위치를 원하는 곳으로 이동시키자 
+        //=이미지의 스타일 속성 중 left, top을 변경시키자
+        function move(){
+            img.style.left=300+"px";
+            img.style.top=500+"px";
         }
 
         //지금까지 사용해왔던 html의 이벤트 핸들러를 js에서도 적용할 수있다
