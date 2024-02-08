@@ -16,7 +16,12 @@
         //이미지를 생성하여 화면에 부착 
         function createImg(){
             console.log("이미지 만들예정");
-
+            let img = document.createElement("img");// <img> 동일 
+            img.src="../images/plane/plane.png"; // <img src=""> 동일
+            
+            let wrapper = document.getElementById("wrapper");
+            //생성된 이미지를 wrapper 자식으로 부착하자 
+            wrapper.appendChild(img);
         }
 
         //지금까지 사용해왔던 html의 이벤트 핸들러를 js에서도 적용할 수있다
