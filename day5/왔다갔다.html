@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let pic;
+        let x=0;  //누적시키거나, 감소시켜야 하므로 전역변수
+
+        function init(){
+            //문서내의 닭다리이미지의 위치를 지정해본다 (body기준 절대위치)
+            pic = document.getElementById("pic");
+            pic.style.position="absolute";
+            pic.style.left=0+"px";
+            pic.style.top=150+"px";
+        }
+
+        // x축으로의 이동함수 정의
+        function move(){
+            x-=5;
+            pic.style.left = x+"px";
+        }
+
+        addEventListener("load", function(){
+            init();
+
+            //setInterval("move()", 10)
+        });
+    </script>
+</head>
+<body>
+    <button>수동</button>
+    <button>자동</button>
+    <img src="../images/chicken.webp" id="pic">
+</body>
+</html>
