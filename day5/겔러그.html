@@ -32,21 +32,23 @@
 
         //다수의 적군을 만들되, 여러행, 여러 열로 배치해야 하므로 
         //즉 2차원의 표구조이므로, 이중반복문으로 처리하면 유용..
-        function createEnemy(){
+        //rows 는 층수, cols는 호수
+        function createEnemy(rows, cols, filename, width, height, marginX, marginY){
             //파란파리...
-            for(let i=1;i<=3;i++){ //3층
-                for(let j=1;j<=20;j++){ //20호수 
+            for(let i=1;i<=rows;i++){ //3층
+                for(let j=1;j<=cols;j++){ //20호수 
                     let img=document.createElement("img"); //<img> 동일
-                    img.src="../images/Gallerxy/enemy2.png";
-                    img.style.width=35+"px";
+                    img.src="../images/Gallerxy/"+filename;
+                    img.style.width=width+"px";
+                    img.style.height=height+"px";
                     img.style.position="absolute"; //wrapper를 기준으로..
-                    img.style.top=i*(50)+"px";
-                    img.style.left=100+(j*(35+3))+"px"; //20개의 적군들 각각 left값 적절히 부여 
+                    img.style.top=marginY+i*(height)+"px";
+                    img.style.left=marginX+(j*(width+3))+"px"; //20개의 적군들 각각 left값 적절히 부여 
                     wrapper.appendChild(img);
                 }
             }
-
             //주황파리 2층 15호수 
+            /*
             for(let i=1;i<=2;i++){ //층수 - y축 top
                 for(let j=1;j<=15;j++){ //호수 - x축 left 
                     let img=document.createElement("img"); //<img> 동일
@@ -59,12 +61,15 @@
 
                 }
             }
-
+            */
         }
 
         addEventListener("load", function(){
             init();
-            createEnemy(); //적군 생성 
+
+            //createEnemy(rows, cols, filename, width, height, marginX)
+            createEnemy(10, 22, "enemy1.png", 25, 30, 70,50); //적군 생성 
+            createEnemy(2, 15, "enemy2.png", 40, 45, 20, (10*30)+70 ); //적군 생성 
 
             setInterval("bgEffect()", 10);
         });
