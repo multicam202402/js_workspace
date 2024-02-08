@@ -34,6 +34,15 @@
             box.style.position="absolute";
             box.style.left=0+"px";
 
+            //7개의 이미지를 box에 부착하기 
+            let img=document.createElement("img"); // <img> 동일 
+            img.src="../images/Shrek/img0.jpg"; //<img src="">
+            img.style.width=500+"px";
+            img.style.height=340+"px";
+            //이미지 한개를 box에 부착 
+            box.appendChild(img);
+
+
             //content 에 부착 
             let content = document.getElementById("content");
             content.appendChild(box);
