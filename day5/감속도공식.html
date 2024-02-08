@@ -15,6 +15,8 @@
     </style>
     <script>
         let img; //모든 함수 및 영역에서 접근할 수 있도록 전역변수로 선언
+        let a=0.1; //목표  지점에 다가갈 보폭의 비율(수치값이 커질수록 보폭이 커짐)
+        let targetX=500; //이미지가 도착할 목표지점의 x좌표
 
         //이미지를 생성하여 화면에 부착 
         function createImg(){
@@ -33,9 +35,18 @@
 
         //이미지의 위치를 원하는 곳으로 이동시키자 
         //=이미지의 스타일 속성 중 left, top을 변경시키자
-        function move(){
-            img.style.left=300+"px";
-            img.style.top=500+"px";
+        function move(x , y){
+            img.style.left=x+"px";
+            img.style.top=y+"px";
+        }
+
+        //목표지점에 도달하되, 한번에 건너뛰지 즉 한번에 도달시키지 말고
+        //목표지점과 물체와의 남은거리의 일정 비율만큼씩만 움직이자 
+        //감속도 운동 
+        //나위치 = 현나위치 + a*(목표-현나위치)
+        function moveSoft(){
+            img.style.left=parseInt(img.style.left)+a*(targetX - parseInt(img.style.left))+"px";
+
         }
 
         //지금까지 사용해왔던 html의 이벤트 핸들러를 js에서도 적용할 수있다
