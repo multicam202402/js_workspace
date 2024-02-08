@@ -15,20 +15,42 @@
         }
     </style>
     <script>
+        let box;
+        let a=0.1;
+        let targetX=-170;
+
         //책갈피 생성
         function createRect(){
-            let box=document.createElement("div"); // <div></div> 동일
+            box=document.createElement("div"); // <div></div> 동일
             box.style.width=200+"px";
             box.style.height=120+"px";
             box.style.background="red";
-
-            box.style.position="absolute"; 
-            box.style.left=-170+"px";
+            box.style.borderRadius=5+"%";//모서리를 둥글게...
+            box.style.position="absolute";
+            box.style.left=targetX+"px";
             box.style.top=100+"px";
+
+            //box 라는 div에 이벤트를 연결하자 (프로그래밍 적으로..)
+            //현재 <div onMouseOver=""> 코드는 불가능.. div를 
+            //js에서 만들었기 때문에, 이벤트 또한 js에서 연결해야 한다 
+            box.addEventListener("mouseover", function(){
+                console.log("마우스 올렸어?");
+                box.style.left=0+"px";
+            });
+            box.addEventListener("mouseout", function(){
+                console.log("마우스 벗어났어?");
+                box.style.left=-170+"px";
+            });
 
             //wrapper에 부착 
             let wrapper = document.getElementById("wrapper");
             wrapper.appendChild(box); 
+        }
+
+        //박스의 움직임에 감속도 공식을 적용해본다 
+        //나의위치 = 현나위치 + a*(목표 - 현나위치)
+        function move(){
+            box.style.left = parseInt(box.style.left) +a*(targetX - parseInt(box.style.left))+"px";
         }
 
         //초기화할 작업이 잇을 경우 아래의 init() 에서 처리하려고...
@@ -39,6 +61,7 @@
 
         addEventListener("load", function(){
             init();
+            setInterval("move()", 10);
         });
     </script>
 </head>
