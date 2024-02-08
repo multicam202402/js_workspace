@@ -19,9 +19,18 @@
         let a=0.1;
         let targetX=100;
         let targetY=200;
+        let count=0; //몇번째 수행인지를 체크할 수 있는 변수
 
         //나위치 = 현나위치 + a*(목표 - 현나위치)
         function move(){
+            count++;
+            //console.log(count);
+            if(count%200 ==0){ //200 마다...
+                console.log(count);
+                targetX=700; //고정 시키지 말고, 랜덤하게 얻어오자
+                targetY=900; //고정 시키지 말고, 랜덤하게 얻어오자
+            }
+
             firefly.style.left = parseInt(firefly.style.left)+a*(targetX - parseInt(firefly.style.left))+"px";
             firefly.style.top = parseInt(firefly.style.top)+a*(targetY - parseInt(firefly.style.top))+"px";
         }   
@@ -41,6 +50,9 @@
 
         addEventListener("load", function(){
             init();
+
+            setInterval("move()", 10);
+            
         });
     </script>
 </head>
