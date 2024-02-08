@@ -17,6 +17,7 @@
         let img; //모든 함수 및 영역에서 접근할 수 있도록 전역변수로 선언
         let a=0.1; //목표  지점에 다가갈 보폭의 비율(수치값이 커질수록 보폭이 커짐)
         let targetX=500; //이미지가 도착할 목표지점의 x좌표
+        let targetY=700; //이미지가 도착할 목표지점의 y좌표
 
         //이미지를 생성하여 화면에 부착 
         function createImg(){
@@ -46,6 +47,7 @@
         //나위치 = 현나위치 + a*(목표-현나위치)
         function moveSoft(){
             img.style.left=parseInt(img.style.left)+a*(targetX - parseInt(img.style.left))+"px";
+            img.style.top=parseInt(img.style.top)+a*(targetY - parseInt(img.style.top))+"px";
 
         }
 
