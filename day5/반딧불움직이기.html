@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body{
+            margin:0px;
+        }
         #wrapper{
             width: 1000px;
             height: 900px;
             background-image: url(../images/mt/m1.jfif);
             background-size:1000px  900px ;
-            margin: auto;
             position: relative;
         }
     </style>
+    <script src="../js/lib.js"></script>
     <script>
+        
         let firefly; //모든 영역에서 접근할 수 있도록...전역변수로 선언
         let a=0.1;
         let targetX=100;
@@ -25,10 +29,10 @@
         function move(){
             count++;
             //console.log(count);
-            if(count%200 ==0){ //200 마다...
-                console.log(count);
-                targetX=700; //고정 시키지 말고, 랜덤하게 얻어오자
-                targetY=900; //고정 시키지 말고, 랜덤하게 얻어오자
+            if(count%400 ==0){ //400 마다...
+                //console.log(count);
+                targetX=getRandomByRange(50,700); //고정 시키지 말고, 랜덤하게 얻어오자
+                targetY=getRandomByRange(100,900); //고정 시키지 말고, 랜덤하게 얻어오자
             }
 
             firefly.style.left = parseInt(firefly.style.left)+a*(targetX - parseInt(firefly.style.left))+"px";
@@ -50,9 +54,14 @@
 
         addEventListener("load", function(){
             init();
+            document.body.addEventListener("mousedown", function(){
+                //마우스의 좌표를 구해서  targetX, targetY  대입 
+                //console.log(event);
+                targetX=event.clientX;
+                targetY=event.clientY;
+            });
 
             setInterval("move()", 10);
-            
         });
     </script>
 </head>
