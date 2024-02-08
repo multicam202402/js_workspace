@@ -15,13 +15,22 @@
         }
     </style>
     <script>
-        
+        let firefly; //모든 영역에서 접근할 수 있도록...전역변수로 선언
+        let a=0.1;
+        let targetX=100;
+        let targetY=200;
+
+        //나위치 = 현나위치 + a*(목표 - 현나위치)
+        function move(){
+            firefly.style.left = parseInt(firefly.style.left)+a*(targetX - parseInt(firefly.style.left))+"px";
+        }   
+
         function init(){
             //반딧불 이미지를 생성하여 원하는 위치에 두자
-            let firefly = document.createElement("img"); // <img>
+            firefly = document.createElement("img"); // <img>
             firefly.src="../images/firefly.webp";
 
-            firefley.style.position="absolute";
+            firefly.style.position="absolute";
             firefly.style.top=0+"px";
             firefly.style.left=0+"px";
 
