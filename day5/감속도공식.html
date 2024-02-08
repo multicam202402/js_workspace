@@ -54,6 +54,9 @@
         //지금까지 사용해왔던 html의 이벤트 핸들러를 js에서도 적용할 수있다
         addEventListener("load", function(){
             createImg();
+
+            //생성된 이미지를 시스템에 의해 자동으로 움직이게 하자 
+            setInterval("moveSoft()", 10);
         });
     </script>
 </head>

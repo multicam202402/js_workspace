@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 800px;
+            height: 800px;
+            background-color: bisque;
+            margin: auto;
+            position: relative;
+            overflow: hidden; /*경계선을 넘어선 컨텐츠를 않보이게 처리*/
+        }
+    </style>
+    <script>
+        //책갈피 생성
+        function createRect(){
+            let box=document.createElement("div"); // <div></div> 동일
+            box.style.width=200+"px";
+            box.style.height=120+"px";
+            box.style.background="red";
+
+            box.style.position="absolute"; 
+            box.style.left=-170+"px";
+            box.style.top=100+"px";
+
+            //wrapper에 부착 
+            let wrapper = document.getElementById("wrapper");
+            wrapper.appendChild(box); 
+        }
+
+        //초기화할 작업이 잇을 경우 아래의 init() 에서 처리하려고...
+        function init(){
+            //책갈피를 생성하여 적당한 위치에 부착 
+            createRect();
+        }
+
+        addEventListener("load", function(){
+            init();
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper"></div>
+</body>
+</html>
