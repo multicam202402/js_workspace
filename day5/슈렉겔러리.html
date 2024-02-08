@@ -24,9 +24,13 @@
         }
     </style>
     <script>
+        let box;
+        let a=0.1;
+        let targetX=0; //box가 도달할 목표 x 축 지점 
+
         //사진 모음 박스 만들기(추후 이 box는 좌우로 부드럽게 움직이자)
         function createBox(){
-            let box = document.createElement("div"); // <div></div> 동일
+            box = document.createElement("div"); // <div></div> 동일
             box.style.width=500*7+"px";
             box.style.height=340+"px";
             box.style.background="yellow";
@@ -35,17 +39,24 @@
             box.style.left=0+"px";
 
             //7개의 이미지를 box에 부착하기 
-            let img=document.createElement("img"); // <img> 동일 
-            img.src="../images/Shrek/img0.jpg"; //<img src="">
-            img.style.width=500+"px";
-            img.style.height=340+"px";
-            //이미지 한개를 box에 부착 
-            box.appendChild(img);
-
+            for(let i=0;i<=6;i++){
+                let img=document.createElement("img"); // <img> 동일 
+                img.src="../images/Shrek/img"+i+".jpg"; //<img src="">
+                img.style.width=500+"px";
+                img.style.height=340+"px";
+                //이미지 한개를 box에 부착 
+                box.appendChild(img);
+            }
 
             //content 에 부착 
             let content = document.getElementById("content");
             content.appendChild(box);
+        }
+
+        //부드럽게 이동 
+        //나위치 = 현나위치 + a*(목표-현나위치)
+        function move(){
+            box.style.left = parseInt(box.style.left)+a*(targetX-parseInt(box.style.left))+"px";
         }
 
         function init(){
