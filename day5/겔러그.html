@@ -47,14 +47,14 @@
             }
 
             //주황파리 2층 15호수 
-            for(){ //층수 - y축 top
-                for(){ //호수 - x축 left 
+            for(let i=1;i<=2;i++){ //층수 - y축 top
+                for(let j=1;j<=15;j++){ //호수 - x축 left 
                     let img=document.createElement("img"); //<img> 동일
-                    img.src="../images/Gallerxy/enemy2.png";
+                    img.src="../images/Gallerxy/enemy1.png";
                     img.style.width=35+"px";
                     img.style.position="absolute"; //wrapper를 기준으로..
-                    img.style.top=i*(50)+"px";
-                    img.style.left=100+(j*(35+3))+"px"; //20개의 적군들 각각 left값 적절히 부여 
+                    img.style.top=150+(i*50)+"px";
+                    img.style.left=200+(j*35)+"px"; //20개의 적군들 각각 left값 적절히 부여 
                     wrapper.appendChild(img);
 
                 }
