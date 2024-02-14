@@ -49,28 +49,50 @@
         let sec=0; //프로그램이 실행되는 동안 변수가 유지되면서 그 값이
                     //누적도 되야 하므로, 전역변수로 빼놓자
         let flag=false;//시계의 작동을 결정짓는 논리값
+        let st; //자동함수인 setInterval  을 가리킬 변수, 추후 이 변수를 이용하여  현재 진행중인 setInterval을 멈출 수 있습니다.
 
-        //초에 사용할 숫자를 1씩 증가시킨다
+        /*-------------------------------------------------------------------
+        이 setCount 함수는 수동이건, 자동이건 공통으로 사용할 로직이므로 
+        이 함수안에 flag 조건을 주지 않아야 합니다.
+        -------------------------------------------------------------------*/
         function setCount(){
-
-            if(flag){ //결국 if 문은 flag의 값이 무엇이냐에 좌우...
+            //if(flag){ //결국 if 문은 flag의 값이 무엇이냐에 좌우...
                 //초 증가
                 sec++;//sec = sec + 1;
-                ss.value=sec;
                 
                 //분 증가 
                 if(sec>=60){ //초가 60에 도달했다면...
                     min++;
-                    mm.value=min; 
                     sec=0;//초 값은 다시 0으로 돌려놓자
                 }
 
                 //아래의 코드는 무조건 수행X, 원할때만..
                 if(min >=60){ //분이 60이상되면..
                     hr++;
-                    hh.value=hr;
                     min=0; //분도 다시 0으로 돌려놓자
                 }
+
+                hh.value=hr;
+                ss.value=sec;
+                mm.value=min; 
+            //}
+        }
+
+        function manual(){
+            stopInterval();
+            setCount();
+        }
+        
+        function auto(){
+            stopInterval();
+            //setInterval("호출대상함수()", 몇초간격으로호출할지);
+            // 1000분의 1초까지 표현가능하므로, 1000 1초 , 100 0.1초
+            st = setInterval("setCount()", 1000); 
+        }
+
+        function stopInterval(){
+            if(st !=undefined){ //만일 현재 실행중인 setInterval이 있다면..
+                clearInterval(st); //setInterval 중지
             }
         }
 
@@ -87,9 +109,6 @@
             //사용자에 의해서가 아니라, 시스템이 개발자가 정의해놓은
             //함수를 일정시간 간격으로 자동 호출하게 해보자
 
-            //setInterval("호출대상함수()", 몇초간격으로호출할지);
-            // 1000분의 1초까지 표현가능하므로, 1000 1초 , 100 0.1초
-            setInterval("setCount()", 1000); 
         }
     </script>
 </head>
@@ -102,9 +121,9 @@
             <input type="text" class="box" id="ss">초
         </div>
         <div id="footer">
-            <button onClick="flag=true;">Start</button>
-            <button onClick="flag=false;">Stop</button>
-            <button onClick="setCount()">수동</button>
+            <button onClick="auto()">Start</button>
+            <button onClick="stopInterval()">Stop</button>
+            <button onClick="manual()">수동</button>
         </div>
     </div>
     
