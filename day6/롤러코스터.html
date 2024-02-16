@@ -28,18 +28,34 @@
         }
     </style>
     <script>
+        let content;
+
+        //어느지점에 점을찍었는지 시각화 시키기 위해, span 태그를 빨간색으로 
+        //생성하여 화면에 부착
+        function createDot(){
+            let span = document.createElement("span"); // <span></span>
+            span.style.background="red";
+            //span 은 inline 이기 때문에 width, height 를 적용할 수 없다..
+            span.style.display="inline-block"; //공존O, width,height O
+            span.style.width=3+"px";
+            span.style.height=3+"px";
+            span.style.borderRadius=50+"px";//모서리 둥글게..
+
+            content.appendChild(span);
+        }
+
         addEventListener("load", function(){
             //content에 마우스 이벤트 연결 
-            let content = document.getElementById("content");
+            content = document.getElementById("content");
+
             content.addEventListener("mousedown", function(){
-                console.log("마우스 눌럿니?");
+                createDot();
             });
 
         });
     </script>
 </head>
 <body>
-    
     <div id="wrapper">
         <div id="content">내용</div>
         <div id="info">좌표</div>
