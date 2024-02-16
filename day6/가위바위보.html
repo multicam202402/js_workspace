@@ -9,13 +9,20 @@
             background-color: yellow;
         }    
     </style>
+    <script src="../js/lib.js"></script>
     <script>
+        let arr=new Array();  //비어 있는 배열 
+        arr[0]="가위.png";
+        arr[1]="바위.png";
+        arr[2]="보.png";
 
         //문서내의 pic 이라는 이미지요소의 src 경로를 가위,바위,보 중 랜덤하게 
         //등장시키자..
         function showImg(){
             let pic=document.getElementById("pic");
-            pic.src="../images/가위.png";
+            let filename=arr[getRandom(arr.length-1)];//length 를 이용하면, 추후 배열의
+            //길이가 변경된다 하여도, 코드 수정이 필요없다
+            pic.src="../images/"+filename; // 가위, 바위, 보 
 
         }
 
