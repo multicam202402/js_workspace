@@ -10,7 +10,8 @@
         let canvas;
         let cellSize=10; //각 셀의 크기(정사각형)
         let cellCount=100; //각셀의 갯수(정사각형) 
-        let cellArray=[]; //모든 셀을 담게될 배열 
+        let cellArray=[]; //모든 셀을 담게될 배열 (그림 지울 목적)
+        let playArray=[]; //그림을 그렸던 셀을 담게될 배열(그림 재생 목적)
 
         function createCell( y , x){
             let cell = document.createElement("div"); // <div></div>
@@ -32,6 +33,8 @@
                 //this란? 이벤트를 일으킨 주체 요소를 말한다
                 this.style.background="red";
                 console.log("마우스 올렸어?");
+                //현재 cell은 그림이 그려진 셀이므로, playArray에 추가해둔다 
+                playArray.push(cell);
             });
 
             canvas.appendChild(cell);
@@ -70,6 +73,16 @@
                 for(let j=0;j<cellArray[i].length;j++){ //호수만큼 
                     cellArray[i][j].style.background="#FFFFFF";
                 }
+            }
+        }
+
+        //재생하기 (기존의 배경색을 모두 지우고, playArray에 들어있는 사각형을 대상으로
+        //색상을 부여하자)
+        function play(){
+            erase();
+            
+            for(let i=0; i<playArray.length;i++){
+                playArray[i].style.background="red";
             }
         }
 
