@@ -41,6 +41,12 @@
             span.style.height=3+"px";
             span.style.borderRadius=50+"px";//모서리 둥글게..
 
+            span.style.position="absolute"; //content 를 기준으로 한 위치
+            let x = event.clientX; //마우스 x좌표 
+            let y =event.clientY; //마우스 y좌표
+            span.style.left=x+"px";
+            span.style.top=y+"px";
+
             content.appendChild(span);
         }
 
