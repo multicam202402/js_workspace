@@ -3,25 +3,31 @@
     //현재로써는 일차원 배열이다
     let box = new Array(4);//크기가 4인 배열
 
-    let arr1 = ["4층 1호","4층 2호","4층 3호"];
-    let arr2 = ["3층 1호","3층 2호","3층 3호"];
-    let arr3 = ["2층 1호","2층 2호","2층 3호"];
-    let arr4 = ["1층 1호","1층 2호","1층 3호"];
-    
+    let arr1 = ["4층 1호", "4층 2호", "4층 3호"];
+    let arr2 = ["3층 1호", "3층 2호", "3층 3호"];
+    let arr3 = ["2층 1호", "2층 2호", "2층 3호"];
+    let arr4 = ["1층 1호", "1층 2호", "1층 3호"];
+
     //이 4개짜리 배열에 , 또 다른 배열들을 담아보자
     //이 시점에 box는 이차원 배열이 된다..
-    box[0]=arr1;
-    box[1]=arr2;
-    box[2]=arr3;
-    box[3]=arr4;
+    box[0] = arr1;
+    box[1] = arr2;
+    box[2] = arr3;
+    box[3] = arr4;
 
     //html로 표현해보자 
     //참고로 table은 이차원 구조이므로, 이차원배열과 상당히 관련성이 높다 
     //이차원배열의 크기가 4라면, 즉 층수가 4층이고, 따라서 tr도 4쌍 
-    let tag="<table border=\"1px\">";
-    tag +="<tr>"; 
-    tag+="<td>AA</td>";               
-    tag +="</tr>";
-    tag+="</table>";            
+    let tag = "<table border=\"1px\">";
+    for (let i=0;i<box.length;i++) {
+        tag += "<tr>";
+        for(let j=0; j< box[i].length;j++ ){
+            tag += "<td>"+box[i][j]+"</td>";
+        }
+        tag += "</tr>";
+    }
+    tag += "</table>";
+
+    document.write(tag);
 
 </script>

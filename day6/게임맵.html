@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 1000px;
+            height: 900px;
+            margin: auto;
+            background-color: yellow; 
+        }        
+    </style>
+    <script>
+        let wrapper;
+
+        //마리오가 밟고 다닐 벽돌..
+        function createBrick(){
+            let brick = document.createElement("img"); // <img> 동일 
+            brick.src="../images/mario/brick1.png"; // <img src=""> 동일 
+
+            wrapper.appendChild(brick); //wrapper에 부착
+        }
+
+        function init(){
+            wrapper = document.getElementById("wrapper");
+            createBrick();
+        }
+
+        addEventListener("load", function(){
+            init();
+        });
+
+    </script>
+</head>
+<body>
+    
+    <div id="wrapper"></div>
+
+</body>
+</html>
