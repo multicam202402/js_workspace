@@ -11,15 +11,27 @@
         let cellSize=10; //각 셀의 크기(정사각형)
         let cellCount=100; //각셀의 갯수(정사각형) 
 
-        function createCell(){
-            cell = document.createElement("div"); // <div></div>
+        function createCell( y , x){
+            let cell = document.createElement("div"); // <div></div>
+            cell.style.background="#FFFFFF";
             //경계선을 부여하자 
             cell.style.border="1px solid green";
+            cell.style.boxSizing="border-box";
             cell.style.width=cellSize+"px";
             cell.style.height=cellSize+"px";
             cell.style.position="absolute";  //canvas 를 기준으로 한 위치 
-            cell.style.left=0+"px";          
-            cell.style.top=0+"px";
+            cell.style.top=(y*cellSize)+"px"; //y 
+            cell.style.left=(x*cellSize)+"px"; //x         
+
+            //생성된 div에 이벤트 연결 
+            cell.addEventListener("mouseover", function(){
+                //익명 함수 영역에서는 이벤트를 일으킨 주체가 되는 요소를 대명사로
+                //가리킬 수 있는데, 이때 사용되는 변수명은 this이다 
+
+                //this란? 이벤트를 일으킨 주체 요소를 말한다
+                this.style.background="red";
+                console.log("마우스 올렸어?");
+            });
 
             canvas.appendChild(cell);
         }
@@ -33,7 +45,11 @@
             canvas.style.position="relative";
 
             //생성된 도화지에 지정된 크기와 갯수만큼의 셀을 생성하여 부착 
-            createCell();
+            for(let i=0; i<cellCount;i++){ //층수 y값 top
+                for(let j=0; j<cellCount;j++){//호수 x값 left
+                    createCell(i , j); //몇층, 몇호순인지 매개변수로 전달하자
+                }
+            }
 
             document.body.appendChild(canvas);
         }
