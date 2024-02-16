@@ -16,7 +16,8 @@
         #content{
             width:1000px;
             height:100%;
-            background-color: aqua;
+            background-image: url(../images/mario/roller.avif);
+            background-size:1000px  100%;
             float:left;
         }
         #info{
@@ -26,6 +27,16 @@
             float:left;
         }
     </style>
+    <script>
+        addEventListener("load", function(){
+            //content에 마우스 이벤트 연결 
+            let content = document.getElementById("content");
+            content.addEventListener("mousedown", function(){
+                console.log("마우스 눌럿니?");
+            });
+
+        });
+    </script>
 </head>
 <body>
     
