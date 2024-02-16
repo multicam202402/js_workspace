@@ -1,0 +1,24 @@
+<script src="../js/lib.js"></script>
+<script>
+
+    //지금까지 사용해왔던 일반 변수에 의한 데이터 생성은 순서를 가지지 않는다..
+    //따라서 반복문의 대상이 될 수 없으며, 랜덤한 값의 대상이 될 수도 없다..
+    let a="부대찌게";
+    let b="김치찌게";
+    let c="돈까스";
+    let d="초밥";
+    let e="카레";
+
+    //해결책) 순서를 가지며 생성되도록 하자 (즉 배열화 시키자)
+    let lunch=new Array(5);
+    lunch[0]="부대찌게";
+    lunch[1]="김치찌게";
+    lunch[2]="돈까스";
+    lunch[3]="초밥";
+    lunch[4]="카레";
+
+    
+    //몇번째 메뉴를 추천할지, 컴퓨터에게 랜덤한 값을 구하여 응용해보자 
+    document.write(lunch[getRandom(lunch.length-1)]);
+
+</script>

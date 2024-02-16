@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            background-color: yellow;
+        }    
+    </style>
+    <script>
+
+        //문서내의 pic 이라는 이미지요소의 src 경로를 가위,바위,보 중 랜덤하게 
+        //등장시키자..
+        function showImg(){
+            let pic=document.getElementById("pic");
+            pic.src="../images/가위.png";
+
+        }
+
+        addEventListener("load", function(){
+            let bt=document.querySelector("button");//css 의 선택자를 이용한 요소 선택
+
+            //이벤트의 종류가 바뀔 수 있으므로, 핸들링 안에는 로직을 길게 작성하지 말고
+            //추후 유지보수성을 위해 별도의 함수로 빼놓자 ..
+            bt.addEventListener("click", function(){
+                showImg();
+            });
+        });                    
+    </script>
+</head>
+<body>
+    
+    <button>실행</button>
+    <div>
+        <img src="" id="pic">
+    </div>
+
+</body>
+</html>
