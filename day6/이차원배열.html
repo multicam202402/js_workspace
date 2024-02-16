@@ -1,0 +1,20 @@
+<script>
+    
+    let box=new Array(3); //3층 짜리 배열 선언 (아직은 1차원 배열임)
+
+    //배열안에 배열넣기 !!
+    let fruit=["사과","딸기","포도","바나나"];
+    let car=["Benz","Audi","BMW","Kia"];
+    let subject=["MongoDB","Spring","Komoran","Cloud"];
+    
+    box[0] = fruit;
+    box[1] = car;
+    box[2] = subject;
+
+    for(let i=0;i<box.length;i++){ //층수 만큼 
+        for(let j=0; j<box[i].length;j++){ //호수
+            console.log(box[i][j]);
+        }
+    }
+
+</script>
