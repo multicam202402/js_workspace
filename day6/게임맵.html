@@ -10,17 +10,30 @@
             height: 900px;
             margin: auto;
             background-color: yellow; 
+            position: relative; /*자식 때문에 명시*/
         }        
     </style>
     <script>
+        //맵을 표현할 이차원 배열을 정의 
+        let map=[]; //이차원? or 일차원?
+
+
         let wrapper;
 
         //마리오가 밟고 다닐 벽돌..
         function createBrick(){
-            let brick = document.createElement("img"); // <img> 동일 
-            brick.src="../images/mario/brick1.png"; // <img src=""> 동일 
+            for(let i=0;i<7;i++){
+                let brick = document.createElement("img"); // <img> 동일 
+                brick.src="../images/mario/brick1.png"; // <img src=""> 동일 
+                brick.style.position="absolute";
+                brick.style.left=500+(i*45)+"px";
+                brick.style.top=450+"px";
 
-            wrapper.appendChild(brick); //wrapper에 부착
+                brick.style.width=45+"px";
+                brick.style.height=45+"px";
+
+                wrapper.appendChild(brick); //wrapper에 부착
+            }
         }
 
         function init(){
