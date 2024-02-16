@@ -10,6 +10,7 @@
         let canvas;
         let cellSize=10; //각 셀의 크기(정사각형)
         let cellCount=100; //각셀의 갯수(정사각형) 
+        let cellArray=[]; //모든 셀을 담게될 배열 
 
         function createCell( y , x){
             let cell = document.createElement("div"); // <div></div>
@@ -34,6 +35,8 @@
             });
 
             canvas.appendChild(cell);
+
+            return cell;  //생성된 cell 을 , 함수호출한 자에게 반환 
         }
 
         function createCanvas(){
@@ -46,12 +49,28 @@
 
             //생성된 도화지에 지정된 크기와 갯수만큼의 셀을 생성하여 부착 
             for(let i=0; i<cellCount;i++){ //층수 y값 top
+
+                //한 층에 넣을 일차원 배열에  cell을 담아놓자
+                let arr=[]; //여기서 선언한 이유?  arr은 층수만큼 존재해야 하므로...
                 for(let j=0; j<cellCount;j++){//호수 x값 left
-                    createCell(i , j); //몇층, 몇호순인지 매개변수로 전달하자
+                    let cell = createCell(i , j); //몇층, 몇호순인지 매개변수로 전달하자
+                    arr.push(cell);//일차원 배열에, 생성된 div를 추가
                 }
+                //이차원 배열에 넣기(여기서 넣어야 하는 이유? 층수만큼 넣어야 하니깐)
+                cellArray.push(arr);
             }
 
             document.body.appendChild(canvas);
+        }
+
+        //도화지 내의 모든 셀의 배경색을 다시 돌려놓자 
+        //모든 셀이 이차원 배열에 담겨 잇으므로, 삭제할때는 이차원배열을 이용할 수 있다.
+        function erase(){
+            for(let i=0; i<cellArray.length;i++){ //층수만큼...
+                for(let j=0;j<cellArray[i].length;j++){ //호수만큼 
+                    cellArray[i][j].style.background="#FFFFFF";
+                }
+            }
         }
 
         function init(){
@@ -60,9 +79,20 @@
 
         addEventListener("load", function(){
             init();
+
+            document.getElementById("bt_play").addEventListener("click", function(){
+                play();
+            });
+
+            document.getElementById("bt_del").addEventListener("click", function(){
+                erase();
+            });
+
         });
     </script>
 </head>
 <body>    
+    <button id="bt_play">재생하기</button>
+    <button id="bt_del">지우기</button>
 </body>
 </html>
