@@ -16,11 +16,11 @@
         //map이라는 이차원 배열 크기는 wrapper의 높이(층수)를 결정할예정 
         //map안에 들어가는 각각의 일차원 배열들은 너비(호수)를 결정할예정
         let map=[
-            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,3,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,3,0,0,0,0,0,0],
+            [0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -44,11 +44,11 @@
             let brick = document.createElement("img"); // <img> 동일 
             brick.src="../images/mario/"+filename; // <img src=""> 동일 
             brick.style.position="absolute";
-            brick.style.left=500+(i*45)+"px";
-            brick.style.top=450+"px";
+            brick.style.left=x*50+"px"; //호수
+            brick.style.top=y*50+"px"; //층수
 
-            brick.style.width=45+"px";
-            brick.style.height=45+"px";
+            brick.style.width=50+"px";
+            brick.style.height=50+"px";
 
             wrapper.appendChild(brick); //wrapper에 부착
         }
@@ -58,8 +58,14 @@
             
             for(let a=0; a<map.length;a++){ //층수 
                 for(let i=0;i<map[a].length;i++){ //호수
-                    if(map[a][i]==1){ //1~ 5사이의 숫자가 발견될때만 이미지 생성...
-                        createItem("mario.webp", a, i); //a는 층수, i는 호수
+
+                    //1~ 5사이의 숫자가 발견될때만 이미지 생성...
+                    switch(map[a][i]){ 
+                        case 1:createItem("mario.webp", a, i);break; //a는 층수, i는 호수
+                        case 2:createItem("brick1.png", a, i);break; //a는 층수, i는 호수
+                        case 3:createItem("brick2.png", a, i);break; //a는 층수, i는 호수
+                        case 4:createItem("star.webp", a, i);break; //a는 층수, i는 호수
+                        case 5:createItem("flower.webp", a, i);break; //a는 층수, i는 호수
                     }
                 }
             }
