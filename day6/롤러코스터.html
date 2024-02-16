@@ -19,6 +19,7 @@
             background-image: url(../images/mario/roller.avif);
             background-size:1000px  100%;
             float:left;
+            position: relative; /*자식 때문에..*/
         }
         #info{
             width: 200px;
@@ -28,7 +29,9 @@
         }
     </style>
     <script>
+        let data=[]; //추후, 일차원 배열(x축좌표,  y축좌표)들을 누적시킬 배열 
         let content;
+        let info;
 
         //어느지점에 점을찍었는지 시각화 시키기 위해, span 태그를 빨간색으로 
         //생성하여 화면에 부착
@@ -43,29 +46,76 @@
 
             span.style.position="absolute"; //content 를 기준으로 한 위치
             let x = event.clientX; //마우스 x좌표 
-            let y =event.clientY; //마우스 y좌표
+            let y =event.clientY; //마우스 y좌표 
+
+            //x축과  y 축 정보를 묶어, 하나의 배열로 생성하자 
+            let dot = [ x , y]; // 305, 500
+            data.push(dot); //그 다음 위치에 추가
+
+            //일반 사용자들이 누적된 좌표를 알수 있도록 info 영역에 
+            //좌표를 출력시켜주자 
+            printDot();
+
             span.style.left=x+"px";
             span.style.top=y+"px";
 
             content.appendChild(span);
         }
 
+        //info  div에 현재까지 누적되어 있는 data 배열의 내용을 출력해버린다 
+        function printDot(){
+            info.innerText=""; //기존 텍스트는 싹 지운다 
+
+            for(let i=0;i<data.length;i++){
+                let arr=data[i]; //1차원 배열을 꺼낸다.
+                let x=arr[0];
+                let y=arr[1];
+                info.innerText=info.innerText+`[ ${x}, ${y} ] \n`;
+            }
+        }
+        
+        //누적된 db 인 좌표데이터를 이용하여, 마리오 이미지의 포지션을 지정해주자
+        function move(){
+
+        }
+        
+        function createMario(){
+            let mario = document.createElement("img"); // <img>
+            mario.src="../images/mario/mario.webp"; // <img src="">
+            mario.style.position="absolute";
+            mario.style.left=100+"px";
+            mario.style.top=150+"px";
+
+            mario.style.width=35+"px";
+
+            content.appendChild(mario); //자식 요소로 부착
+        }
+
         addEventListener("load", function(){
             //content에 마우스 이벤트 연결 
             content = document.getElementById("content");
+            info = document.getElementById("info");
+            
+            createMario();//주인공 생성
 
             content.addEventListener("mousedown", function(){
                 createDot();
             });
 
+            document.querySelector("button").addEventListener("click", function(){
+                //마리오가 db를 참고하여, 자신의 위치를 좌표와 일치
+                move();
+            });
         });
     </script>
 </head>
 <body>
     <div id="wrapper">
-        <div id="content">내용</div>
-        <div id="info">좌표</div>
+        <div id="content"></div>
+        <div id="info"></div>
     </div>
+    
+    <button>출발</button>
 
 </body>
 </html>
