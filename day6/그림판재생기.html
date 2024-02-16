@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //셀의 크기와 갯수가 정해져잇지 않기 때문에, wrapper조차도 프로그래밍적으로 
+        //즉 동적으로 생성해내자!!
+        let canvas;
+        let cellSize=10; //각 셀의 크기(정사각형)
+        let cellCount=100; //각셀의 갯수(정사각형) 
+
+        function createCell(){
+            cell = document.createElement("div"); // <div></div>
+            //경계선을 부여하자 
+            cell.style.border="1px solid green";
+            cell.style.width=cellSize+"px";
+            cell.style.height=cellSize+"px";
+            cell.style.position="absolute";  //canvas 를 기준으로 한 위치 
+            cell.style.left=0+"px";          
+            cell.style.top=0+"px";
+
+            canvas.appendChild(cell);
+        }
+
+        function createCanvas(){
+            canvas = document.createElement("div"); //평상시의 바로 그 wrapper
+            canvas.style.width=(cellSize*cellCount)+"px";
+            canvas.style.height=(cellSize*cellCount)+"px";
+            canvas.style.background="yellow";
+            canvas.style.margin="auto";
+            canvas.style.position="relative";
+
+            //생성된 도화지에 지정된 크기와 갯수만큼의 셀을 생성하여 부착 
+            createCell();
+
+            document.body.appendChild(canvas);
+        }
+
+        function init(){
+            createCanvas();     
+        }
+
+        addEventListener("load", function(){
+            init();
+        });
+    </script>
+</head>
+<body>    
+</body>
+</html>
