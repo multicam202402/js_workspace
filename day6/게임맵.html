@@ -6,8 +6,6 @@
     <title>Document</title>
     <style>
         #wrapper{
-            width: 1000px;
-            height: 900px;
             margin: auto;
             background-color: yellow; 
             position: relative; /*자식 때문에 명시*/
@@ -15,30 +13,65 @@
     </style>
     <script>
         //맵을 표현할 이차원 배열을 정의 
-        let map=[]; //이차원? or 일차원?
+        //map이라는 이차원 배열 크기는 wrapper의 높이(층수)를 결정할예정 
+        //map안에 들어가는 각각의 일차원 배열들은 너비(호수)를 결정할예정
+        let map=[
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,3,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,0,0,0,0,0,3,3,3,3,3,3,3,0,0]
+        ]; //이차원? or 일차원?
 
 
         let wrapper;
 
+        //주인공, 버섯, 별, 물음표 등등 모든 아이템이 위치할 곳을 처리하는 함수
+        function createItem(filename, y, x){
+            console.log("주인공의 층수(y)은 ", y, " 호수(x)", x);
+
+            let brick = document.createElement("img"); // <img> 동일 
+            brick.src="../images/mario/"+filename; // <img src=""> 동일 
+            brick.style.position="absolute";
+            brick.style.left=500+(i*45)+"px";
+            brick.style.top=450+"px";
+
+            brick.style.width=45+"px";
+            brick.style.height=45+"px";
+
+            wrapper.appendChild(brick); //wrapper에 부착
+        }
+
         //마리오가 밟고 다닐 벽돌..
-        function createBrick(){
-            for(let i=0;i<7;i++){
-                let brick = document.createElement("img"); // <img> 동일 
-                brick.src="../images/mario/brick1.png"; // <img src=""> 동일 
-                brick.style.position="absolute";
-                brick.style.left=500+(i*45)+"px";
-                brick.style.top=450+"px";
-
-                brick.style.width=45+"px";
-                brick.style.height=45+"px";
-
-                wrapper.appendChild(brick); //wrapper에 부착
+        function createMap(){
+            
+            for(let a=0; a<map.length;a++){ //층수 
+                for(let i=0;i<map[a].length;i++){ //호수
+                    if(map[a][i]==1){ //1~ 5사이의 숫자가 발견될때만 이미지 생성...
+                        createItem("mario.webp", a, i); //a는 층수, i는 호수
+                    }
+                }
             }
+
         }
 
         function init(){
             wrapper = document.getElementById("wrapper");
-            createBrick();
+            wrapper.style.width= map[0].length*50 +"px";
+            wrapper.style.height=map.length*50 +"px";
+
+            createMap();
         }
 
         addEventListener("load", function(){
