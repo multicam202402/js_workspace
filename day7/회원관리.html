@@ -77,7 +77,7 @@
             //(즉 이차원배열에서 일차원 배열(회원1 사람 정보)을 꺼내자)
             for(let i=0; i<memberArray.length;i++){//층수만큼..
                 //console.log(memberArray[i]);
-                tag+="<tr align='center' onClick=\"showDetail("+i+")\">";
+                tag+="<tr align='center'  onMouseOver=\"this.style.background='yellow'\"  onMouseOut=\"this.style.background=''\"   onClick=\"showDetail("+i+")\">";
                 for(let j=0; j< memberArray[i].length;j++){
                     tag+="<td>"+memberArray[i][j]+"</td>";                
                 } 
