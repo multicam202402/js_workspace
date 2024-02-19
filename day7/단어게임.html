@@ -54,7 +54,7 @@
         //게임에 사용할 단어 10개를 준비하자 
         let wordArray=[
             "무지개",
-            "고무마",
+            "고구마",
             "우주선",
             "제주도",
             "여행",
@@ -66,21 +66,32 @@
         ];
         
         let question;
+        let feedback;
         let index=0; //몇번째 단어를 접근해야 할지를 결정짓는 전역변수(누적되어야 하므로..)
+        let txt; //사용자가 입력하는 입력양식 컴포넌트
 
         function next(){
             let key = event.keyCode; //입력한 키에 대한 ascii 코드 얻기
             console.log(key);
             
             if(key==13){//사용자가 엔터를 쳤을때만...
-                index++;
-                question.innerText=wordArray[index];
+               
+                let mark;
+                if(question.innerText == txt.value){ //단어가 일치할 경우만 아래의 코드를 수행
+                    index++;
+                    question.innerText=wordArray[index];
+                    mark="O";
+                }else{
+                    mark="X";
+                }
+                feedback.innerText=mark;
             }
         }
 
         addEventListener("load", function(){
             question = document.getElementById("question");
-            let txt = document.querySelector("#keyInput input"); //css 선택자를 이용한 요소접근
+            feedback = document.getElementById("feedback");
+            txt = document.querySelector("#keyInput input"); //css 선택자를 이용한 요소접근
             
             txt.addEventListener("keyup", function(){
                 //엔터를 치면 다음 단어가 나오게..
