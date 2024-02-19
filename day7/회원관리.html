@@ -115,12 +115,31 @@
         //목록을 갱신해보자 
         function del(){
             let result = confirm("당신 정말 "+currentIndex+" 층을 지울거에요?");
-            
+
             if(result){//사용자가 '확인'(긍정) 을 누르면 
                 memberArray.splice(currentIndex,  1);
                 //목록을 갱신~~
                 getList();
             }
+        }
+
+        //현재 선택된 회원의 정보를, 우측 입력양식의 정보로 변경한 후, 
+        //목록도 갱신해주기
+        function edit(){
+            //우측 영역의 입력 컴포넌트들...
+            let id2 = document.getElementById("id2"); //회원아이디
+            let pass2 = document.getElementById("pass2"); //회원비번
+            let email2 = document.getElementById("email2"); //회원비번
+            let age2 = document.getElementById("age2"); //회원 나이
+
+            let member = memberArray[currentIndex];            
+            member[0]=id2.value; //회원의 아이디 
+            member[1]=pass2.value; //회원의 비번
+            member[2]=email2.value; //회원의 이메일
+            member[3]=age2.value; //회원의 나이 
+
+            //한 사람에 대한 수정이 완료되었으면, 목록 갱신 
+            getList();
         }
 
         addEventListener("load", function(){
