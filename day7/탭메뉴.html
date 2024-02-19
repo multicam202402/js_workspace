@@ -16,14 +16,15 @@
             height:50px;
             position: relative;
         }
-    </style>
+        </style>
     <script>
         let header;
         let content;
         let titleArray=["공지게시판","FAQ","자유게시판"];
         let colorArray=["green","yellow","blue"];
-
-
+        let pageArray=[]; //배열
+        
+        
         //게시판의 책갈피 메뉴를 담당할 네비게이션 생성하기
         function createTab(){
             for(let i=0; i<titleArray.length;i++){
@@ -39,15 +40,31 @@
             }
         }
 
+
         //각 탭메뉴와 쌍을 이루는 페이지 생성 
         function createPage(){
-            let page = document.createElement("div");
-            page.style.width="100%";
-            page.style.height="200px";
-            page.style.background="green";
+            for(let i=0;i<3;i++){
+                let page = document.createElement("div");
+                page.style.width="100%";
+                page.style.height="200px";
+                page.style.background=colorArray[i];
 
-            //content에 부착 
-            content.appendChild(page);
+                //content에 부착 
+                content.appendChild(page);
+
+                pageArray.push(page);
+            }
+        }
+
+        //지정한 요소를 보일지 않보일지를 처리하는 함수
+        function showHide(n){
+            for(let i=0;i<pageArray.length;i++){
+                if(i==n){//단 원하는 애만 보이고, 
+                    pageArray[i].style.display="block";    
+                }else{//나머지는
+                    pageArray[i].style.display="none";
+                }
+            }
         }
 
         addEventListener("load", function(){
@@ -56,6 +73,7 @@
 
             createTab();
             createPage();
+            showHide(0); //프로그램 가동과 동시에 0번째인 공지게시판 보여주기 
         });
     </script>
 </head>
