@@ -39,19 +39,23 @@
         ];
 
         function createThumb(){
+
             //4층, 3호수짜리 표형태의 이미지를 생성해보자 
-            let img = document.createElement("img"); // <img> 동일 
-            img.src="../images/item/변"; // <img src="">
-            
-            img.style.position="absolute";
-            img.style.top=0+"px";
-            img.style.left=0+"px";
+            for(let i=0; i< nameArray.length;i++){
+                for(let j=0;j<nameArray[i].length;j++){
+                    let img = document.createElement("img"); // <img> 동일 
+                    img.src="../images/item/"+nameArray[i][j]; // <img src="">
+                    
+                    img.style.position="absolute";
+                    img.style.top=(i*100)+"px"; //y 층수 관련 
+                    img.style.left=(j*100)+"px"; //x 호수 관련 
 
-            img.style.width=100+"px";
-            img.style.height=100+"px";
+                    img.style.width=100+"px";
+                    img.style.height=100+"px";
 
-            aside.appendChild(img); //자식 요소로 추가 
-
+                    aside.appendChild(img); //자식 요소로 추가 
+                }
+            }
         }   
 
         addEventListener("load", function(){
