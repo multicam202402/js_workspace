@@ -114,9 +114,13 @@
         //현재 보고 있는 회원의 정보를 이차원배열인 memberArray에서 제거 후, 
         //목록을 갱신해보자 
         function del(){
-            confirm("당신 정말 "+currentIndex+" 층을 지울거에요?");
+            let result = confirm("당신 정말 "+currentIndex+" 층을 지울거에요?");
             
-            //memberArray.splice( 몇번째층? ,  1);
+            if(result){//사용자가 '확인'(긍정) 을 누르면 
+                memberArray.splice(currentIndex,  1);
+                //목록을 갱신~~
+                getList();
+            }
         }
 
         addEventListener("load", function(){
