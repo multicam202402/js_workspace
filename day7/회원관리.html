@@ -59,14 +59,29 @@
 
             //현재까지 가입한 회원 수 
             console.log("현재까지 가입한 회원 수:",  memberArray.length);
+
+            getList();
         }
 
         //현재까지 누적된 회원들의 정보를 table 태그로 표현해본다 
         function getList(){
             let tag="<table width=\"100%\" border=\"1px\">";
             tag+="<tr>";
-            tag+="<td>AAA</td>";                
+            tag+="<th>아이디</th>";                
+            tag+="<th>비밀번호</th>";                
+            tag+="<th>이메일</th>";                
+            tag+="<th>연령</th>";                
             tag+="</tr>";
+
+            //층수 즉 표의 레코드 만큼 반복하면서 회원1명을 꺼내기 
+            //(즉 이차원배열에서 일차원 배열(회원1 사람 정보)을 꺼내자)
+            for(let i=0; i<memberArray.length;i++){//층수만큼..
+                tag+="<tr align='center'>";
+                for(let j=0; j< memberArray[i].length;j++){
+                    tag+="<td>"+memberArray[i][j]+"</td>";                
+                } 
+                tag+="</tr>";
+            }
             tag +="</table>";       
 
             content.innerHTML=tag; 
