@@ -65,10 +65,12 @@
             "유치원"
         ];
         
-        let question;
-        let feedback;
+        let question; //문제 출력  div
+        let feedback; //ox 출력  div
+        let total; //점수 출력 div 
         let index=0; //몇번째 단어를 접근해야 할지를 결정짓는 전역변수(누적되어야 하므로..)
         let txt; //사용자가 입력하는 입력양식 컴포넌트
+        let score=0; //10점씩 누적될 점수 전역변수 
 
         function next(){
             let key = event.keyCode; //입력한 키에 대한 ascii 코드 얻기
@@ -81,17 +83,23 @@
                     index++;
                     question.innerText=wordArray[index];
                     mark="O";
+                    score +=10;
                 }else{
                     mark="X";
                 }
                 feedback.innerText=mark;
+                total.innerText=score+" 점";
+                txt.value="";//입력한 단어를 다시 초기화 
             }
         }
 
         addEventListener("load", function(){
             question = document.getElementById("question");
             feedback = document.getElementById("feedback");
+            total = document.getElementById("total");
             txt = document.querySelector("#keyInput input"); //css 선택자를 이용한 요소접근
+            
+            txt.focus();//해당 요소에 커서 올리기 
             
             txt.addEventListener("keyup", function(){
                 //엔터를 치면 다음 단어가 나오게..
