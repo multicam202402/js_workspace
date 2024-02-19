@@ -37,6 +37,7 @@
     <script>
         let memberArray=[];  //1사람의 회원정보가 담겨진 일차원배열을 모아놓을 이차원배열
                 //전역변수로 선언해야, 프로그램 끝날때까지 회원들을 누적시켜놓을 수 있슴
+        let content; //회원의 목록 정보가 출력될 div
 
         //한 사람에 대한 정보를 일차원 배열에 담고, 이 일차원 배열을 각 사람마다 누적시키다
         //보면, 결국 이차원구조의 테이블 즉 데이터베이스가 생성될 수 있다..
@@ -55,9 +56,25 @@
 
             //이차원 배열에, 회원 일차원 배열 추가하기 
             memberArray.push(member);
+
+            //현재까지 가입한 회원 수 
+            console.log("현재까지 가입한 회원 수:",  memberArray.length);
+        }
+
+        //현재까지 누적된 회원들의 정보를 table 태그로 표현해본다 
+        function getList(){
+            let tag="<table width=\"100%\" border=\"1px\">";
+            tag+="<tr>";
+            tag+="<td>AAA</td>";                
+            tag+="</tr>";
+            tag +="</table>";       
+
+            content.innerHTML=tag; 
         }
 
         addEventListener("load", function(){
+            content = document.getElementById("content");
+
             //등록 버튼에 이벤트 연결   
             document.getElementById("bt_regist").addEventListener("click", function(){
                 regist();
