@@ -24,6 +24,26 @@
             float:left;
         }
     </style>
+    <script>
+        let aside;
+        let content;
+
+        function createThumb(){
+            //4층, 3호수짜리 표형태의 이미지를 생성해보자 
+            let img = document.createElement("img"); // <img> 동일 
+            img.src="../images/item/lemon.webp"; // <img src="">
+            aside.appendChild(img); //자식 요소로 추가 
+
+        }   
+
+        addEventListener("load", function(){
+            aside = document.getElementById("aside");
+            content = document.getElementById("content");
+
+            createThumb();//썸네일 생성하기
+        });
+
+    </script>
 </head>
 <body>
     
