@@ -34,11 +34,49 @@
             background-color: aquamarine;
         }
     </style>
+    <script>
+        let memberArray=[];  //1사람의 회원정보가 담겨진 일차원배열을 모아놓을 이차원배열
+                //전역변수로 선언해야, 프로그램 끝날때까지 회원들을 누적시켜놓을 수 있슴
+
+        //한 사람에 대한 정보를 일차원 배열에 담고, 이 일차원 배열을 각 사람마다 누적시키다
+        //보면, 결국 이차원구조의 테이블 즉 데이터베이스가 생성될 수 있다..
+        function regist(){
+            let member=[]; //한 사람의 정보를 담게 될 일차원 배열 
+            
+            let id = document.getElementById("id"); //회원아이디
+            let pass = document.getElementById("pass"); //회원비번
+            let email = document.getElementById("email"); //회원비번
+            let age = document.getElementById("age"); //회원 나이
+
+            member.push(id.value); //사용자가 입력한 아이디 값 
+            member.push(pass.value); //사용자가 입력한 비밀번호 값
+            member.push(email.value); //사용자가 입력한 메일주소 값
+            member.push(age.value); //사용자가 입력한 나이
+
+            //이차원 배열에, 회원 일차원 배열 추가하기 
+            memberArray.push(member);
+        }
+
+        addEventListener("load", function(){
+            //등록 버튼에 이벤트 연결   
+            document.getElementById("bt_regist").addEventListener("click", function(){
+                regist();
+            });
+        });
+
+    </script>
 </head>
 <body>
     
     <div id="wrapper">
-        <div id="aside1">좌측</div>
+        <div id="aside1">
+            <input type="text" placeholder="Your ID.." id="id">
+            <input type="password" placeholder="Your Pass.." id="pass">
+            <input type="text" placeholder="Your E-Mail" id="email">
+            <input type="text" placeholder="Your Age" id="age">
+            <button id="bt_regist">등록</button>
+
+        </div>
         <div id="section">
             <div id="header"></div>
             <div id="content"></div>
