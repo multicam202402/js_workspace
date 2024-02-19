@@ -19,7 +19,10 @@
     </style>
     <script>
         let header;
+        let content;
         let titleArray=["공지게시판","FAQ","자유게시판"];
+        let colorArray=["green","yellow","blue"];
+
 
         //게시판의 책갈피 메뉴를 담당할 네비게이션 생성하기
         function createTab(){
@@ -28,18 +31,31 @@
                 tab.style.width=100+"px";
                 tab.style.height=50+"px";
                 tab.innerText=titleArray[i];
-                tab.style.background="red";      
+                tab.style.background=colorArray[i];      
                 tab.style.borderRadius=7+"px";      
                 tab.style.position="absolute";
                 tab.style.left= i*100+"px";
                 header.appendChild(tab);
             }
+        }
 
+        //각 탭메뉴와 쌍을 이루는 페이지 생성 
+        function createPage(){
+            let page = document.createElement("div");
+            page.style.width="100%";
+            page.style.height="200px";
+            page.style.background="green";
+
+            //content에 부착 
+            content.appendChild(page);
         }
 
         addEventListener("load", function(){
             header = document.getElementById("header");
+            content = document.getElementById("content");
+
             createTab();
+            createPage();
         });
     </script>
 </head>
