@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //5개이상의 화살이, 각각 다른 속도, 다른 색상, 다른 y축위치로 동작하게 코드작성...
+        let span;
+        let x=0; //좌표 
+        let velX=5; //속도
+
+        //화살을 생성한다
+        function createArrow(){
+            span = document.createElement("span"); //<span></span>  inline
+            span.innerText="→"; //이미지가 아닌 텍스트 즉 특수 문자임  
+            span.style.color="red"; //폰트 색상을 빨간색으로 
+            span.style.position="absolute";
+            span.style.top=100+"px";
+            span.style.left=0+"px";
+
+            document.body.appendChild(span);
+        }
+
+        //생성된 화살을 날려보자
+        function move(){
+            x = x + velX; 
+            span.style.left=x+"px";
+        }
+
+        function init(){
+            createArrow();
+            setInterval("move()", 10);
+        }
+    </script>
+</head>
+<body onLoad="init()">
+</body>
+</html>
