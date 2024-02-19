@@ -132,12 +132,12 @@
             let email2 = document.getElementById("email2"); //회원비번
             let age2 = document.getElementById("age2"); //회원 나이
 
+            //member로 받아서 처리해도 되고, 이차원배열로 표현해도 된다
             let member = memberArray[currentIndex];            
-            member[0]=id2.value; //회원의 아이디 
-            member[1]=pass2.value; //회원의 비번
+            memberArray[currentIndex][0]=id2.value; //회원의 아이디 
+            memberArray[currentIndex][1]=pass2.value; //회원의 비번
             member[2]=email2.value; //회원의 이메일
             member[3]=age2.value; //회원의 나이 
-
             //한 사람에 대한 수정이 완료되었으면, 목록 갱신 
             getList();
         }
