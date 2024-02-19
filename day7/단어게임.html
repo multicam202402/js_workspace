@@ -16,30 +16,49 @@
             width:100%;
             height:200px;
             background-color: antiquewhite;
+            line-height: 200px;
+            font-size:75px;
+            text-align: center;
         }
         #keyInput{
             width:100%;
             height:100px;
             background-color: aquamarine;
         }
+        #keyInput input{
+            width:98%;
+            height:98%;
+            font-size:50px;
+        }
         #feedback{
             width:100%;
             height:150px;
             background-color: burlywood;
+            line-height: 150px;
+            font-size:130px;
+            font-weight: bold;
+            text-align: center;
+            color:red;
         }
         #total{
             width:100%;
             height:50px;
             background-color: cadetblue;
+            line-height: 50px;
+            font-size:48px;
+            font-weight: bold;
+            text-align: center;
         }
     </style>
 </head>
 <body>
     
     <div id="wrapper">
-        <div id="question">단어나올곳</div>
-        <div id="keyInput">입력영역</div>
-        <div id="feedback">피드백</div>
+        <div id="question">광화문</div>
+        <div id="keyInput">
+            <input type="text" placeholder="단어 입력">
+        </div>
+        <div id="feedback">X</div>
         <div id="total">점수</div>
     </div>
 
