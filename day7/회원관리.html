@@ -76,7 +76,7 @@
             //층수 즉 표의 레코드 만큼 반복하면서 회원1명을 꺼내기 
             //(즉 이차원배열에서 일차원 배열(회원1 사람 정보)을 꺼내자)
             for(let i=0; i<memberArray.length;i++){//층수만큼..
-                tag+="<tr align='center'>";
+                tag+="<tr align='center' onClick=\"showDetail()\">";
                 for(let j=0; j< memberArray[i].length;j++){
                     tag+="<td>"+memberArray[i][j]+"</td>";                
                 } 
@@ -88,6 +88,11 @@
             tag +="</table>";       
 
             content.innerHTML=tag; 
+        }
+
+        //표에서 선택한 한 회원의 정보를 우측 aside2 영역에 출력
+        function showDetail(){
+            console.log("상세보기 하고 싶어?");
         }
 
         addEventListener("load", function(){
