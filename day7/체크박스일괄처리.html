@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        addEventListener("load", function(){
+            //대왕 체크박스에 클릭 이벤트 연결 
+            let king=document.getElementById("king");
+            king.addEventListener("click", function(){
+
+                //문서내의 ch라는 배열명을 갖는 모든 체크박스를 대상으로..
+                let ch = document.getElementsByName("ch");
+                
+                //this란 객체가 자기 스스로를 가리킬 수 있는 변수이다 
+                for(let i=0;i<ch.length;i++){//체크박스 수 만큼...
+                    ch[i].checked = this.checked;
+                }                
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <button id="bt" onClick="this.style.background='yellow'">왕버튼</button>
+
+    <input type="checkbox" id="king">전체선택     
+    <p></p>
+    <!-- 
+        html 태그가 브라우저 실행시 메모리에 올라올때, 만일 이름이 동일하게 부여되어 있다면
+        해당 이름으로 배열이 생성
+     -->
+    <input type="checkbox" name="ch">고객님 안녕하세요 <br>     
+    <input type="checkbox" name="ch">고객님 안녕하세요 <br>     
+    <input type="checkbox" name="ch">고객님 안녕하세요 <br>     
+    <input type="checkbox" name="ch">고객님 안녕하세요 <br>     
+    <input type="checkbox" name="ch">고객님 안녕하세요 <br>     
+    <input type="checkbox" name="ch">고객님 안녕하세요 <br>     
+    <input type="checkbox" name="ch">고객님 안녕하세요 <br>     
+    <input type="checkbox" name="ch">고객님 안녕하세요 <br>     
+    <input type="checkbox" name="ch">고객님 안녕하세요 <br>     
+    <input type="checkbox" name="ch">고객님 안녕하세요 <br>     
+    <input type="checkbox" name="ch">고객님 안녕하세요 <br>     
+
+</body>
+</html>
