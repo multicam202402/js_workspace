@@ -46,6 +46,10 @@
         //이미지 자체를 제어하기 위한 , 즉 이미지들은 담아놓기 위한 배열 
         let imgArray=[]; //4층 3호수짜리 이미지들을 안고 잇을 배열...
         let rect; //이미지를 따라다니는 포인터 사각형
+        let a=0.1; //몇 프로씩 움직일지를 결정짓는 비율계수, 숫자가 작을수록 발걸음
+                        //보폭이 작아지므로, 부드럽다..
+        let targetX=0; // 호수의 목표 좌표
+        let targetY=0;  //층수의 목표 좌표 
 
         function createThumb(){
 
@@ -109,8 +113,8 @@
            obj.style.filter="none";
 
            //포인터가 현재 선택한 이미지의 좌표와 일치 
-           rect.style.top=row*100+"px";
-           rect.style.left=col*100+"px";
+           targetY=row*100;
+           targetX=col*100; 
         }
 
         //사각형 포인터를 생성하여, 선택된 이미지와 동일한 좌표에 위치시키기
@@ -128,6 +132,19 @@
             aside.appendChild(rect);
         }
 
+        //감속도 공식 작성
+        //나의위치 = 나의위치 + a*(목표-나의위치);
+        //                                    ---남은거리---
+        function move(){
+            rect.style.left=parseFloat(rect.style.left)+a*(targetX - parseFloat(rect.style.left))+"px";
+            rect.style.top=parseFloat(rect.style.top)+a*(targetY - parseFloat(rect.style.top))+"px";
+        }
+
+        //부드러운 움직임 에니메이션을 위한 루프
+        function gameLoop(){
+            move();
+        }
+
         addEventListener("load", function(){
             aside = document.getElementById("aside");
             content = document.getElementById("content");
@@ -135,6 +152,8 @@
 
             createThumb();//썸네일 생성하기
             createRect(); //포인터 생성 
+
+            setInterval("gameLoop()", 10);
         });
 
     </script>
