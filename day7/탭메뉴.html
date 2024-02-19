@@ -36,7 +36,13 @@
                 tab.style.borderRadius=7+"px";      
                 tab.style.position="absolute";
                 tab.style.left= i*100+"px";
+                tab.style.top=20+"px";
                 header.appendChild(tab);
+
+                tab.addEventListener("mouseover",function(){
+                    showHide(i);
+                });
+
             }
         }
 
