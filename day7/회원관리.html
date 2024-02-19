@@ -76,7 +76,8 @@
             //층수 즉 표의 레코드 만큼 반복하면서 회원1명을 꺼내기 
             //(즉 이차원배열에서 일차원 배열(회원1 사람 정보)을 꺼내자)
             for(let i=0; i<memberArray.length;i++){//층수만큼..
-                tag+="<tr align='center' onClick=\"showDetail()\">";
+                //console.log(memberArray[i]);
+                tag+="<tr align='center' onClick=\"showDetail("+i+")\">";
                 for(let j=0; j< memberArray[i].length;j++){
                     tag+="<td>"+memberArray[i][j]+"</td>";                
                 } 
@@ -91,8 +92,11 @@
         }
 
         //표에서 선택한 한 회원의 정보를 우측 aside2 영역에 출력
-        function showDetail(){
-            console.log("상세보기 하고 싶어?");
+        function showDetail(n){
+            console.log("상세보기 하고 싶어?", n);
+
+
+
         }
 
         addEventListener("load", function(){
@@ -121,7 +125,15 @@
             <div id="header"></div>
             <div id="content"></div>
         </div>
-        <div id="aside2">우측</div>
+        <div id="aside2">
+            <input type="text" placeholder="Your ID.." id="id2">
+            <input type="password" placeholder="Your Pass.." id="pass2">
+            <input type="text" placeholder="Your E-Mail" id="email2">
+            <input type="text" placeholder="Your Age" id="age2">
+            <button id="bt_edit">수정</button>
+            <button id="bt_del">삭제</button>
+
+        </div>
     </div>
 
 </body>
