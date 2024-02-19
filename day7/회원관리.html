@@ -95,8 +95,18 @@
         function showDetail(n){
             console.log("상세보기 하고 싶어?", n);
 
+            //우측 영역의 입력 컴포넌트들...
+            let id2 = document.getElementById("id2"); //회원아이디
+            let pass2 = document.getElementById("pass2"); //회원비번
+            let email2 = document.getElementById("email2"); //회원비번
+            let age2 = document.getElementById("age2"); //회원 나이
+            
+            let member = memberArray[n]; //전달되어 온 n으로 즉 층수로 이차원배열을 접근하자
 
-
+            id2.value=member[0] ; //회원 아이디 채워넣기 
+            pass2.value=member[1] ; //비번 채워넣기 
+            email2.value=member[2] ; //이메일 채워넣기 
+            age2.value=member[3]     ; //나이 채워넣기 
         }
 
         addEventListener("load", function(){
