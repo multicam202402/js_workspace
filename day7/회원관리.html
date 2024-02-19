@@ -82,6 +82,9 @@
                 } 
                 tag+="</tr>";
             }
+            tag+="<tr>";
+            tag+="<td colspan='4' align='right'>누적 회원수: "+memberArray.length+"명</td>";                
+            tag+="</tr>";
             tag +="</table>";       
 
             content.innerHTML=tag; 
