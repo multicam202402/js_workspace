@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let cannon;
+
+        function init(){
+            //대포의 위치 잡기 
+            cannon.style.position="absolute"; // body를 부모로 함 
+            cannon.style.top=200+"px";
+            cannon.style.left=0+"px";            
+        }
+
+        addEventListener("load", function(){
+            cannon = document.getElementById("cannon");
+            init();
+        });
+    </script>
+</head>
+<body>
+    <select id="sel">
+        <option value="">포탄 선택</option>
+        <option value="b1.webp">대공포</option>
+        <option value="b2.webp">미사일</option>
+        <option value="b3.png">레이저</option>
+    </select>
+    
+    <p></p>
+
+    <img src="../images/cannon/cannon.png" id="cannon">
+
+</body>
+</html>
