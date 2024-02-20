@@ -21,12 +21,12 @@
             //함수내에 선언해야 한다..
             //객체가 보유한 변수를 가리켜, 멤버변수라 한다.  property 속성이라고 한다 
             //객체의 상태를 담고 있다고 하여 속성이라 한다..
-            constructor(x, y, color){ //이미 정해져있는 메서드  new Arrow()
+            constructor(x, y, color, velX){ //이미 정해져있는 메서드  new Arrow()
                 //변수명 앞에 오는 .(점)은 전산에서 소유권을 나타낸다.
                 this.span;
                 this.x=x; //좌표 
                 this.y=y; //y좌표
-                this.velX=5; //속도
+                this.velX=velX; //속도
                 this.color=color;
 
                 this.createArrow(); //나의 createArrow()
@@ -57,7 +57,7 @@
             //거푸집으로부터 화살 인스턴스 1개 만들어보자 
             for(let i=0;i<100;i++){
                 //변 = 빨,주노,초파남보 중 랜덤하게... 
-                arrowArray.push(new Arrow(0, i*15, colorArray[getRandom(colorArray.length-1)])) ;            
+                arrowArray.push(new Arrow(0, i*15, colorArray[getRandom(colorArray.length-1)], getRandomByRange(1,7)));
             }
         }
         
