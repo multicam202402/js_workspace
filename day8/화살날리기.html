@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        let arrow;
-        
+        let arrowArray=[];//화살을 다량으로 보관할 배열
+
         //5개 이상의 화살이, 각각 다른 속도, 다른 색상, 다른 y축위치로 동작하게 코드작성...
         //감속도 운동은 필요없으며, 각각 다른 등속도 운동으로 움직이면 됩니다!~
         //결국 객체지향 언어(Object Oriented Programming) 는 신기술이 아니었다...
@@ -52,11 +52,16 @@
 
         function makeArrow(){
             //거푸집으로부터 화살 인스턴스 1개 만들어보자 
-            arrow = new Arrow(100, 200);            
+            for(let i=0;i<100;i++){
+                arrowArray.push(new Arrow(0, i*15)) ;            
+            }
         }
         
         function gameLoop(){
-            arrow.move();
+            //생성된 모든 화살을 대상으로, 움직임 메서드 호출
+            for(let i=0;i<arrowArray.length;i++){
+                arrowArray[i].move();
+            }
         }
 
         function init(){
