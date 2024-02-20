@@ -6,7 +6,9 @@
     <title>Document</title>
     <script src="./Cannon.js"></script>
     <script>
-        let cannon;
+        let cannon;//대포
+        let bulletArray=[];//총알, undefined , null과 같음
+                                    //배열을 선언하면 존재는 하되, 단지 사이즈가 0인 것 뿐임
         
         function init(){
             //대포의 위치 잡기 
@@ -18,7 +20,17 @@
         //거푸집으로부터, 총알 인스턴스를 생성하자(new 연산자 호출)
         function fire(){
             //src, x, y, width, height
-            new Cannon("../images/cannon/b1.webp", 100, 300, 40,40);
+            let bullet = new Cannon("../images/cannon/b1.webp", 100, 300, 40,40,5,0);
+            
+            //태어난 총알을 배열에 추가한다 
+            bulletArray.push(bullet);    
+        }
+        
+        //생성되는 모든 총알을 대상으로 move() 호출해주자
+        function gameLoop(){
+            for(let i=0;i<bulletArray.length;i++){
+                bulletArray[i].move();
+            }
         }
 
         addEventListener("load", function(){
@@ -37,6 +49,8 @@
                     fire(); //발사 함수호출
                 }
             });
+
+            setInterval("gameLoop()", 10);
         });
     </script>
 </head>
