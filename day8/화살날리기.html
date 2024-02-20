@@ -8,6 +8,7 @@
     <script>
         let arrowArray=[];//화살을 다량으로 보관할 배열
         let colorArray=["red","orange","yellow","green","blue","navy","purple"];
+        let charArray=["★","→","♣","♥","☏"];
 
         //5개 이상의 화살이, 각각 다른 속도, 다른 색상, 다른 y축위치로 동작하게 코드작성...
         //감속도 운동은 필요없으며, 각각 다른 등속도 운동으로 움직이면 됩니다!~
@@ -21,13 +22,14 @@
             //함수내에 선언해야 한다..
             //객체가 보유한 변수를 가리켜, 멤버변수라 한다.  property 속성이라고 한다 
             //객체의 상태를 담고 있다고 하여 속성이라 한다..
-            constructor(x, y, color, velX){ //이미 정해져있는 메서드  new Arrow()
+            constructor(x, y, color, velX, char){ //이미 정해져있는 메서드  new Arrow()
                 //변수명 앞에 오는 .(점)은 전산에서 소유권을 나타낸다.
                 this.span;
                 this.x=x; //좌표 
                 this.y=y; //y좌표
                 this.velX=velX; //속도
                 this.color=color;
+                this.char=char;
 
                 this.createArrow(); //나의 createArrow()
             }
@@ -37,7 +39,7 @@
             //화살을 생성한다
             createArrow(){
                 this.span = document.createElement("span"); //<span></span>  inline
-                this.span.innerText="→"; //이미지가 아닌 텍스트 즉 특수 문자임  
+                this.span.innerText=this.char; //이미지가 아닌 텍스트 즉 특수 문자임  
                 this.span.style.color=this.color; //폰트 색상을 빨간색으로 
                 this.span.style.position="absolute";
                 this.span.style.top=this.y+"px";
@@ -57,7 +59,8 @@
             //거푸집으로부터 화살 인스턴스 1개 만들어보자 
             for(let i=0;i<100;i++){
                 //변 = 빨,주노,초파남보 중 랜덤하게... 
-                arrowArray.push(new Arrow(0, i*15, colorArray[getRandom(colorArray.length-1)], getRandomByRange(1,7)));
+                let mark = charArray[getRandom(charArray.length-1)];
+                arrowArray.push(new Arrow(0, i*15, colorArray[getRandom(colorArray.length-1)], getRandomByRange(1,7), mark));
             }
         }
         
