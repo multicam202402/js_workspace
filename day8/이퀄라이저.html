@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./Rect.js"></script>
     <script>
         let wrapper;
         let count=20; //이퀄라이저 막대 갯수 
@@ -12,6 +13,7 @@
 
         function init(){
             wrapper=document.createElement("div");
+            wrapper.style.position="relative";
             wrapper.style.margin="auto";
             wrapper.style.background="gray";
 
