@@ -14,6 +14,7 @@
         let bgArray=["red","orange","yellow","green","blue","navy","purple"];
         let a=0.1; //감속도 공식의 부드러운 정보를 나타내는 비율계수
         let rectArray=[]; //모든 막대를 담고 있을 배열 
+        let interval=0; //몇번째 마다 무언가를 처리하고 싶을때 interval을 조정하는 변수
 
         function createRect(){
             for(let i=0;i<count;i++){
@@ -43,6 +44,15 @@
             for(let i=0; i<rectArray.length;i++){
                 rectArray[i].move();
             }
+
+            //20개의 막대중, 어떤 특정한 녀석의 targetH만 변경해보자
+            interval++;
+            //console.log(interval);
+
+            //if(interval%2 ==0){ //50마다...
+                //막대들 중, 하나를 랜덤하게 선택하여 ,그녀석의 targetH 를 랜덤값 높이값부여
+                rectArray[getRandom(rectArray.length-1)].targetH = getRandomByRange(1, height);
+            //}
         }
 
         addEventListener("load", function(){
