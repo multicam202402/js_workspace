@@ -14,14 +14,28 @@
             cannon.style.top=200+"px";
             cannon.style.left=0+"px";            
         }
+        
+        //거푸집으로부터, 총알 인스턴스를 생성하자(new 연산자 호출)
+        function fire(){
+            //src, x, y, width, height
+            new Cannon("../images/cannon/b1.webp", 100, 300, 40,40);
+        }
 
         addEventListener("load", function(){
             cannon = document.getElementById("cannon");
             init();
             
             //body 에 키보드 이벤트 연결 
-            document.body.addEventListener("keydown", function(){
-                console.log("키 눌렀어?");
+            //addEventListener() 메서드의 두번째 매개변수인 익명함수는 
+            //매개변수를 보유할 수 있고, 이때 이 매개변수로 전달되어져 오는 객체가 
+            //바로 event  객체이다 
+            document.body.addEventListener("keydown", function(e){
+                //e는 event 객체이다 
+                console.log("키 눌렀어?", e.keyCode);
+
+                if(e.keyCode ==32 ){ //space bar
+                    fire(); //발사 함수호출
+                }
             });
         });
     </script>
