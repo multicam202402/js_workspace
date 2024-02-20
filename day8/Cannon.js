@@ -12,12 +12,14 @@ class Cannon{
     //생성자 메서드란? 이 객체를 탄생시키는 시점에, 관여되는 초기화 코드를
     //작성할 수 있는 함수를 말한다 주로 객체가 어떤 스타일로 태어날지를 결정
     //예) 공장에서 자동차를 생산할때, 색상, 어떤 옵션 장착할지 등등 결정..
-    constructor(src, x, y, width, height){
+    constructor(src, x, y, width, height, velX, velY){
 
         this.img=document.createElement("img");
         this.src=src; //태어날때의 이미지
         this.x=x; //태어날때의 x 축 위치 
         this.y=y; //태어날때의 y 축 위치 
+        this.velX=velX; //x축으로의 속도
+        this.velY=velY;  //y축으로의 속도
         this.width=width; //태어날때의 너비
         this.height=height; //태어날때의 높이        
 
@@ -31,5 +33,12 @@ class Cannon{
 
         //화면에 부착 
         document.body.appendChild(this.img); //이미지를 body 태그인 부모에 부착
+    }
+
+    //대포알의 움직임을 정의 
+    //객체지향에서는 움직임을 정의하는 코드가 바로 함수이며, 이 함수는 객체에 소속이 되므로
+    //메서드라 불린다 
+    move(){
+        this.x += 5;
     }
 }
