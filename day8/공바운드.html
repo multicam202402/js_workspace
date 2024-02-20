@@ -10,13 +10,33 @@
             height: 900px;
             background-color: gray;                                    
             margin: auto;
+            position: relative;
         }
     </style>
+    <script src="./Ball.js"></script>
+    <script src="../js/lib.js"></script>
     <script>
         let wrapper;
-        
-        function createBall(){
+        let ballArray=[]; 
+        let colorArray=["red","orange","yellow","green","blue","navy","purple"];
 
+        function createBall(){
+            //container, bg, x, y, width, height, velX, velY, text
+            let color = colorArray[ getRandom(colorArray.length-1) ];
+            let velX= getRandomByRange(1,10);
+            let velY= getRandomByRange(1,10) ;
+
+            let ball = new Ball(wrapper, color, 0, 0, 50,50, velX, velY, "");
+
+            //생성된 볼을 배열에 추가하기 
+            ballArray.push(ball);
+        }
+
+        //모든 공의  move() 메서드를 호출
+        function gameLoop(){
+            for(let i=0; i<ballArray.length;i++){
+                ballArray[i].move();
+            }
         }
 
         addEventListener("load", function(){
@@ -28,6 +48,8 @@
                     createBall();                        
                 }
             });
+
+            setInterval("gameLoop()", 10);
         });
     </script>
 </head>
