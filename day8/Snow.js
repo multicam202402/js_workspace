@@ -36,6 +36,10 @@ class Snow{
         this.x += this.velX;
         this.y += this.velY;
 
+        //x와 y축값이 화면을 벗어나면, 굳이 존재시킬 필요가 없다 
+        //1) 화면에서 제거 
+        //2) 배열에서 삭제 
+
         //화면에 보여질 처리(랜더링)
         this.div.style.top=this.y+"px";
         this.div.style.left=this.x+"px";        
