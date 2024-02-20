@@ -15,10 +15,16 @@ class Ball{
 
         //style 적용 
         this.div.style.background=this.bg;
+        this.div.style.borderRadius=50+"%";
         
         this.div.style.position="absolute";
         this.div.style.top=this.y+"px";
         this.div.style.left=this.x+"px";
         
+        this.div.style.width=this.width+"px";
+        this.div.style.height=this.height+"px";
+
+        //부모 요소에 부착 
+        this.container.appendChild(this.div);
     }
 }
