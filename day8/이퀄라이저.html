@@ -12,12 +12,16 @@
         let width=20; //막대 하나당 너비
         let height=300; //막대 하나당 높이
         let bgArray=["red","orange","yellow","green","blue","navy","purple"];
-        
+        let a=0.1; //감속도 공식의 부드러운 정보를 나타내는 비율계수
+        let rectArray=[]; //모든 막대를 담고 있을 배열 
+
         function createRect(){
             for(let i=0;i<count;i++){
                 //container, bg, x, y, width, height
                 let bg = bgArray[ getRandom(bgArray.length-1) ];
-                new Rect(wrapper, bg, i*width,0, width, height );
+                let targetH = getRandomByRange(1, height);
+                let rect = new Rect(wrapper, bg, i*width,0, width, height, targetH );
+                rectArray.push(rect);//배열에 추가하기
             }                
         }
 
@@ -34,9 +38,19 @@
             document.body.appendChild(wrapper);
         }
 
+        function gameLoop(){
+            //모든 막대를 대상으로 move() 호출
+            for(let i=0; i<rectArray.length;i++){
+                rectArray[i].move();
+            }
+        }
+
         addEventListener("load", function(){
             init();
             createRect();
+
+            //에니메이션을 위한 루프 
+            setInterval("gameLoop()", 10);
         });
 
     </script>
