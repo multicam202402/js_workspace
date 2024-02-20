@@ -18,6 +18,11 @@
         addEventListener("load", function(){
             cannon = document.getElementById("cannon");
             init();
+            
+            //body 에 키보드 이벤트 연결 
+            document.body.addEventListener("keydown", function(){
+                console.log("키 눌렀어?");
+            });
         });
     </script>
 </head>
