@@ -49,7 +49,7 @@ class Ball{
         //현재 움직이고 있는 공 인스턴스에 , 정보를 출력해보자  <div></div>
         let str="x:"+this.x+"\n";
         str = str+"y:"+this.y;
-        
+
         this.div.innerText=str;
 
         //렌더링

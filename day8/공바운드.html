@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        #info{
+            width:900px;
+            height:50px;
+            margin: auto;
+            font-size:30px;
+        }
+
         #wrapper{
             width: 900px;
             height: 900px;
@@ -16,7 +23,8 @@
     <script src="./Ball.js"></script>
     <script src="../js/lib.js"></script>
     <script>
-        let wrapper;
+        let info; //프로그램의 정보가 출력될 div
+        let wrapper;        
         let ballArray=[]; 
         let colorArray=["red","orange","yellow","green","blue","navy","purple"];
 
@@ -37,10 +45,15 @@
             for(let i=0; i<ballArray.length;i++){
                 ballArray[i].move();
             }
+
+            //wrapper 프로그램의 상태 정보 출력하기 
+            let str="생성된 공의 수: "+ballArray.length;
+            info.innerText=str;
         }
 
         addEventListener("load", function(){
             wrapper = document.getElementById("wrapper");
+            info= document.getElementById("info");
 
             //키보드 이벤트 연결 
             document.body.addEventListener("keydown", function(e){
@@ -54,6 +67,7 @@
     </script>
 </head>
 <body>
+    <div id="info"></div>
     <div id="wrapper"></div>
 </body>
 </html>
