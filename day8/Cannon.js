@@ -22,6 +22,7 @@ class Cannon{
         this.height=height; //태어날때의 높이        
 
         //멤버변수들을 이용하여, 스타일을 지정해보자 
+        this.img.src=this.src;
         this.img.style.position="absolute";
         this.img.style.top=this.y+"px";
         this.img.style.left=this.x+"px";
