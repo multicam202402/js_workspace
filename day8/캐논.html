@@ -20,7 +20,10 @@
         //거푸집으로부터, 총알 인스턴스를 생성하자(new 연산자 호출)
         function fire(){
             //src, x, y, width, height
-            let bullet = new Cannon("../images/cannon/b1.webp", 100, 300, 40,40,5,0);
+            let x=parseInt(cannon.style.left);//대포 본체의 x좌표
+            let y=parseInt(cannon.style.top); //대포 본체의 y좌표
+
+            let bullet = new Cannon("../images/cannon/b1.webp", x+50, y+5, 40,40,5,0);
             
             //태어난 총알을 배열에 추가한다 
             bulletArray.push(bullet);    
