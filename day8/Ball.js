@@ -34,10 +34,17 @@ class Ball{
         this.x += this.velX;
         this.y += this.velY;
 
-        //공의 현재 x+width 값이, 우측 벽의 한계(900)에 도달하면 velX의 부호를 반대로 전환 -1 곱하기
-        //공의 현재 x값이 , 좌측 벽의 한계(0)에 도달하면 velX의 부호를 반대로 전환
+        //공의 현재 x+width 값이, 우측 벽의 한계(900)에 도달하면 velX의 부호를 반대로 전환,즉  -1 곱하기
+        //공의 현재 x값이, 좌측 벽의 한계(0)에 도달하면 velX의 부호를 반대로 전환
+        if(this.x<=0 || (this.x+this.width) >=900){
+            this.velX=this.velX*-1;
+        }
+
         //공의 현재 y값이, 위쪽 벽의 한계(0)에 도달하면 velY의 부호를 반대로 전환 
-        //공의 현재 y+height값이 , 아래쪽 벽의 한계(900)에 도달하면 .velY부호를 반대로 전환
+        //공의 현재 y+height 값이, 아래쪽 벽의 한계(900)에 도달하면 velY부호를 반대로 전환
+        if(this.y<=0 || (this.y+this.height)>=900){
+            this.velY=this.velY*-1;
+        }
 
         //렌더링
         this.div.style.top=this.y+"px";
