@@ -49,10 +49,10 @@
             interval++;
             //console.log(interval);
 
-            //if(interval%2 ==0){ //50마다...
+            if(interval%2 ==0){ //50마다...
                 //막대들 중, 하나를 랜덤하게 선택하여 ,그녀석의 targetH 를 랜덤값 높이값부여
                 rectArray[getRandom(rectArray.length-1)].targetH = getRandomByRange(1, height);
-            //}
+            }
         }
 
         addEventListener("load", function(){
@@ -60,7 +60,7 @@
             createRect();
 
             //에니메이션을 위한 루프 
-            setInterval("gameLoop()", 10);
+            setInterval("gameLoop()", 5);
         });
 
     </script>

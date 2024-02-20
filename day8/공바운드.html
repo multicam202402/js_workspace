@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 900px;
+            height: 900px;
+            background-color: gray;                                    
+            margin: auto;
+        }
+    </style>
+    <script>
+        let wrapper;
+        
+        function createBall(){
+
+        }
+
+        addEventListener("load", function(){
+            wrapper = document.getElementById("wrapper");
+
+            //키보드 이벤트 연결 
+            document.body.addEventListener("keydown", function(e){
+                if(e.keyCode==32){
+                    createBall();                        
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper"></div>
+</body>
+</html>
