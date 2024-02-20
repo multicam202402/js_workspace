@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+        let arrow;
+        
         //5개 이상의 화살이, 각각 다른 속도, 다른 색상, 다른 y축위치로 동작하게 코드작성...
         //감속도 운동은 필요없으며, 각각 다른 등속도 운동으로 움직이면 됩니다!~
         //결국 객체지향 언어(Object Oriented Programming) 는 신기술이 아니었다...
@@ -17,12 +19,14 @@
             //함수내에 선언해야 한다..
             //객체가 보유한 변수를 가리켜, 멤버변수라 한다.  property 속성이라고 한다 
             //객체의 상태를 담고 있다고 하여 속성이라 한다..
-            constructor(){
+            constructor(x, y){ //이미 정해져있는 메서드  new Arrow()
                 //변수명 앞에 오는 .(점)은 전산에서 소유권을 나타낸다.
                 this.span;
-                this.x=0; //좌표 
-                this.y=0; //y좌표
+                this.x=x; //좌표 
+                this.y=y; //y좌표
                 this.velX=5; //속도
+
+                this.createArrow(); //나의 createArrow()
             }
             
             //클래스내에 정의된 함수들은 사물의 동작 방법을 정의한다고 하여, 
@@ -46,10 +50,20 @@
             }
         }
 
+        function makeArrow(){
+            //거푸집으로부터 화살 인스턴스 1개 만들어보자 
+            arrow = new Arrow(100, 200);            
+        }
+        
+        function gameLoop(){
+            arrow.move();
+        }
 
         function init(){
-            //createArrow();
-            //setInterval("move()", 10);
+            //화살 생성하기 
+            makeArrow();
+
+            setInterval("gameLoop()", 10);
         }
     </script>
 </head>
