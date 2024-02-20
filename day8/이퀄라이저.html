@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let wrapper;
+        let count=20; //이퀄라이저 막대 갯수 
+        let width=20; //막대 하나당 너비
+        let height=300; //막대 하나당 높이
+
+        function init(){
+            wrapper=document.createElement("div");
+            wrapper.style.margin="auto";
+            wrapper.style.background="gray";
+
+            wrapper.style.width=count*width+"px";
+            wrapper.style.height=height+"px";
+
+            //wrapper를 body 에 부착 
+            document.body.appendChild(wrapper);
+        }
+
+        addEventListener("load", function(){
+            init();
+        });
+
+    </script>
+</head>
+<body>
+</body>
+</html>
