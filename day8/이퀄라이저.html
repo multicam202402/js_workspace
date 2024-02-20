@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./Rect.js"></script>
+    <script src="../js/lib.js"></script>
     <script>
         let wrapper;
         let count=20; //이퀄라이저 막대 갯수 
         let width=20; //막대 하나당 너비
         let height=300; //막대 하나당 높이
+        let bgArray=["red","orange","yellow","green","blue","navy","purple"];
+        
+        function createRect(){
+            for(let i=0;i<count;i++){
+                //container, bg, x, y, width, height
+                let bg = bgArray[ getRandom(bgArray.length-1) ];
+                new Rect(wrapper, bg, i*width,0, width, height );
+            }                
+        }
 
         function init(){
             wrapper=document.createElement("div");
@@ -26,6 +36,7 @@
 
         addEventListener("load", function(){
             init();
+            createRect();
         });
 
     </script>
