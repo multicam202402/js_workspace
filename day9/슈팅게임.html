@@ -15,19 +15,25 @@
             height:640px;
             background-image: url(../images/plane/game_bg.jpg);
             margin:auto;
+            position: relative;
         }
     </style>
+    <script src="./Hero.js"></script>
     <script>
         let flag=true; //게임루프의 실행여부를 결정짓는 논리값 
-
+        let info;
+        let wrapper;
+        
         //모든 요소가 움직이려면(에니메이셔 효과를 주려면), 루프가 필요하기 때문...
         function gameLoop(){
             if(flag){
-                console.log("gameLoop called...");
+                //console.log("gameLoop called...");
             }
         }
 
         addEventListener("load", function(){
+            info=document.getElementById("info");
+            wrapper=document.getElementById("wrapper");
 
             //키보드 이벤트연결 
             document.body.addEventListener("keydown", function(e){
