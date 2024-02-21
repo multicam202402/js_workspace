@@ -25,4 +25,15 @@ class Hero{
 
         this.container.appendChild(this.img);        
     }
+
+    //움직이기 
+    move(){
+        //물리량 변화 
+        this.x +=this.velX;
+        this.y +=this.velY;
+
+        //렌더링
+        this.img.style.left=this.x+"px";
+        this.img.style.top=this.y+"px";
+    }
 }
