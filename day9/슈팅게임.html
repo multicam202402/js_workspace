@@ -17,6 +17,7 @@
             margin:auto;
             position: relative;
             background-position: 0px  0px;
+            overflow: hidden; /*넘치는 컨텐츠를 가려버리기*/
         }
     </style>
     <script src="./Hero.js"></script>
@@ -63,6 +64,10 @@
                 for(let i=0;i<bulletArray.length;i++){//총알이 존재할때만...
                     bulletArray[i].move();//총알의 move();
                 }
+
+                //info 영역에 실시간으로 총알의 수 출력 
+                let str="총알수: "+bulletArray.length+"\n";
+                info.innerText=str;
             }
         }
 
@@ -102,7 +107,7 @@
     </script>
 </head>
 <body>
-    <div id="info">스테이지, 점수, 목숨수, 적군수, 총알수</div>
+    <div id="info"></div>
     <div id="wrapper"></div>    
 </body>
 </html>
