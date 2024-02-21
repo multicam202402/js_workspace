@@ -28,6 +28,13 @@ class Bullet{
         this.x+=this.velX;
         this.y+=this.velY;
 
+        //화면의 한계점을 넘어설땐, 총알을 제거(화면에서제거+ 배열에서제거)
+        if(this.x >=1000){
+            wrapper.removeChild(this.div);//1.화면에서 제거 
+            bulletArray.splice( bulletArray.indexOf(this) ,1); //2.배열에서도 제거     
+        }
+
+
         this.div.style.left=this.x+"px";
         this.div.style.top=this.y+"px";
     }
