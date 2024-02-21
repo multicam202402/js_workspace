@@ -50,17 +50,27 @@
             keyInput[0].addEventListener("keyup", function(e){
                 if(e.keyCode==13){
                     //1)채팅 메시지를 상대방에 출력 
-                    log[1].append("hahahahaahah\n"); //상대방인 우측 textarea에 문자열 누적
+                    log[1].append(this.value+"\n"); //상대방인 우측 textarea에 문자열 누적
 
-                    //2) 나의 textare에 기록을 남기기     
+                    //2) 나의 textare에 기록을 남기기   
+                    log[0].append(this.value+"\n");  
+
+                    //입력한 텍스트는 다시 초기화 
+                    this.value="";
                 }
             });
 
             //우측 텍스트박스에 입력이 일어나면..
-            keyInput[0].addEventListener("keyup", function(e){
+            keyInput[1].addEventListener("keyup", function(e){
                 if(e.keyCode==13){
                     //1)채팅 메시지를 상대방에 출력 
-                    //2) 나의 textare에 기록을 남기기     
+                    log[0].append(this.value+"\n"); //상대방인 좌측 textarea에 문자열 누적
+
+                    //2) 나의 textare에 기록을 남기기   
+                    log[1].append(this.value+"\n");  
+
+                    //입력한 텍스트는 다시 초기화 
+                    this.value="";
                 }
             });
 
