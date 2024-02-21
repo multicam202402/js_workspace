@@ -40,6 +40,9 @@ class Bullet{
 
             let result = collisionCheck(this , enemyArray[i]);//충돌여부를 판단하기
             if(result){//충돌 감지
+                
+                score +=enemyArray[i].score; //전역변수 score에 10누적
+
                 //나죽고 (화면제거 + 배열에서 제거 )
                 wrapper.removeChild(this.div);
                 bulletArray.splice( bulletArray.indexOf(this) , 1 );
@@ -47,6 +50,7 @@ class Bullet{
                 //(적군)너죽고(화면제거 + 배열에서 제거)
                 wrapper.removeChild(enemyArray[i].img);
                 enemyArray.splice(i , 1);
+
             }
         }
 

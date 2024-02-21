@@ -37,6 +37,7 @@
 
         let enemyFile=["e1.png","e2.webp","e3.webp","e4.webp"];
         let count=0;//적군의 등장 interval 조절하는 변수 
+        let score=0; //취득 점수 
 
         //배경이미지의 x좌표를 이동시키자
         function bgEffect(){
@@ -65,7 +66,9 @@
             for(let i=0; i<enemyFile.length;i++){
                 //container, src, direct, x, y, width, height,velX,velY
                 let direct = (i==1)? -1:1;
-                let enemy = new Enemy(wrapper, "../images/plane/"+enemyFile[i],direct ,1200, 100*i, 50,50,-3, 0);
+                let num = (i==1)? 50:10;
+
+                let enemy = new Enemy(wrapper, "../images/plane/"+enemyFile[i],direct, num ,1200, 100*i, 50,50,-3, 0);
 
                 //생성된 적군의 인스턴스를 배열에 추가하자 
                 enemyArray.push(enemy);
@@ -91,6 +94,7 @@
                 //info 영역에 실시간으로 총알의 수 출력 
                 let str="총알수: "+bulletArray.length+", ";
                 str += "적군수:"+enemyArray.length+", ";
+                str += "점수:"+score+", ";
 
                 info.innerText=str;
 
