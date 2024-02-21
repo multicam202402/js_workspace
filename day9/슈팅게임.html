@@ -36,6 +36,7 @@
         let enemyArray=[]; //다수의 적군을 담아야 하므로, 배열로 선언
 
         let enemyFile=["e1.png","e2.webp","e3.webp","e4.webp"];
+        let count=0;//적군의 등장 interval 조절하는 변수 
 
         //배경이미지의 x좌표를 이동시키자
         function bgEffect(){
@@ -92,6 +93,11 @@
                 str += "적군수:"+enemyArray.length+", ";
 
                 info.innerText=str;
+
+                count++;
+                if(count%240==0){ //40마다..적군 생성
+                    createEnemy(); //적군 등장
+                }
             }
         }
 
@@ -125,8 +131,6 @@
 
            
             createHero(); //주인공 등장 
-            createEnemy(); //적군 등장
-
             setInterval("gameLoop()", 10);
         });
     </script>
