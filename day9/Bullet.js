@@ -13,6 +13,7 @@ class Bullet{
         //style
         this.div.style.borderRadius=50+"%";
         this.div.style.background="red";
+        this.div.style.filter="blur(2px)";
 
         this.div.style.position="absolute";
         this.div.style.left=this.x+"px";
@@ -22,5 +23,13 @@ class Bullet{
         this.div.style.height=this.height+"px";
 
         this.container.appendChild(this.div);
+    }
+    move(){
+        this.x+=this.velX;
+        this.y+=this.velY;
+
+        this.div.style.left=this.x+"px";
+        this.div.style.top=this.y+"px";
+
     }
 }
