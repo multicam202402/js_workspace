@@ -58,8 +58,22 @@
                 //조건을 따져볼 대상이 여러개인 경우 else~if switch 문 사용해본다 
                 switch(e.keyCode){
                     case 27:flag=!flag;break;
+                    case 37:hero.velX=-5;break; //left  x값을 음수값
+                    case 39:hero.velX=5;break; //right x값을 양수값
+                    case 38:hero.velY=-5;break;//top y값을 음수값
+                    case 40:hero.velY=5;break;//down  y값을 양수값
                 }
+            });
 
+            //키보드에서 손을 떼면..
+            document.body.addEventListener("keyup", function(e){
+                //조건을 따져볼 대상이 여러개인 경우 else~if switch 문 사용해본다 
+                switch(e.keyCode){
+                    case 37:hero.velX=0;break;
+                    case 39:hero.velX=0;break; 
+                    case 38:hero.velY=0;break;
+                    case 40:hero.velY=0;break;
+                }
             });
 
             //주인공 등장 
