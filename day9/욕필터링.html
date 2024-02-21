@@ -37,17 +37,48 @@
             height:25px;
         }
     </style>
+    <script>
+
+
+        addEventListener("load", function(){
+            
+            //두개의 텍스트 박스에 키보드 이벤트 연결 
+            let keyInput =document.getElementsByName("keyInput"); //input
+            let log = document.getElementsByName("log"); //textrea
+
+            //좌측 텍스트박스에 입력이 일어나면..
+            keyInput[0].addEventListener("keyup", function(e){
+                if(e.keyCode==13){
+                    //1)채팅 메시지를 상대방에 출력 
+                    log[1].append("hahahahaahah\n"); //상대방인 우측 textarea에 문자열 누적
+
+                    //2) 나의 textare에 기록을 남기기     
+                }
+            });
+
+            //우측 텍스트박스에 입력이 일어나면..
+            keyInput[0].addEventListener("keyup", function(e){
+                if(e.keyCode==13){
+                    //1)채팅 메시지를 상대방에 출력 
+                    //2) 나의 textare에 기록을 남기기     
+                }
+            });
+
+
+        });
+
+    </script>
 </head>
 <body>
     
     <div id="wrapper">
         <div class="chatWin" id="chat1">
-            <textarea></textarea>
-            <input type="text">
+            <textarea name="log"></textarea>
+            <input type="text" name="keyInput">
         </div>
         <div class="chatWin" id="chat2">
-            <textarea></textarea>
-            <input type="text">
+            <textarea name="log"></textarea>
+            <input type="text" name="keyInput">
         </div>
     </div>
 
