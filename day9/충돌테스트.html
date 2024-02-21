@@ -12,9 +12,13 @@
             width:100%;
             height:900px;
             background-color: aqua;
+            position: relative;
         }
     </style>
     <script>
+        let wrapper;
+        let box1, box2;
+
         //박스를 정의한다 
         class Box{
             constructor(container, bg, x, y, width, height){
@@ -40,6 +44,18 @@
             }
         }
 
+        //사각형 두개를 생성하자
+        function createBox(){
+            //container, bg, x, y, width, height
+            box1 = new Box(wrapper, "red", 300, 400, 200, 200);
+            box2 = new Box(wrapper, "green", 800, 400, 200, 200);
+        }
+
+        addEventListener("load", function(){
+            wrapper =document.getElementById("wrapper");
+
+            createBox();
+        });
     </script>
 </head>
 <body>
