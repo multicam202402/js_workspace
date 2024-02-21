@@ -27,6 +27,7 @@
         let wrapper;
         let bgX=0; //배경이미지의 x좌표
         let hero;
+        let bullet; //여러개임에도 불구하고 ,변수를 단수로 한나만?? undefined = null
 
         //배경이미지의 x좌표를 이동시키자
         function bgEffect(){
@@ -38,15 +39,27 @@
             //container, src, x, y, width, height, velX, velY
             hero = new Hero(wrapper, "../images/plane/plane.png", 50,100,50,40,0,0);
         }
+        
+        //Bullet 의 인스턴스를 생성하되, 주인공의 머리부분부터 날아가도록    
+        function fire(){
+            //container, x, y, width, height, velX, velY
+            let x=hero.x + hero.width ; //주인공x+주인공.width
+            let y=hero.y+ (hero.height/2);  //주인공의y+주인공높이/2
+
+            bullet = new Bullet(wrapper, x, y, 20,16,8,0);
+        }
 
         //모든 요소가 움직이려면(에니메이셔 효과를 주려면), 루프가 필요하기 때문...
         function gameLoop(){
             if(flag){
                 //console.log("gameLoop called...");
                 bgEffect();
-
-                //주인공 move() 
-                hero.move();
+                
+                hero.move();//주인공 move() 
+                
+                if(bullet != undefined){//총알이 존재할때만...
+                    bullet.move();//총알의 move();
+                }
             }
         }
 
@@ -59,6 +72,7 @@
                 //조건을 따져볼 대상이 여러개인 경우 else~if switch 문 사용해본다 
                 switch(e.keyCode){
                     case 27:flag=!flag;break;
+                    case 32:fire();break; //총알 생성
                     case 37:hero.velX=-5;break; //left  x값을 음수값
                     case 39:hero.velX=5;break; //right x값을 양수값
                     case 38:hero.velY=-5;break;//top y값을 음수값
