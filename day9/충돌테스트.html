@@ -32,6 +32,7 @@
                 
                 //style
                 this.div.style.background=this.bg;
+                this.div.style.fontSize=50+"px";
 
                 this.div.style.position="absolute";
                 this.div.style.left=this.x+"px";
@@ -41,6 +42,13 @@
                 this.div.style.height=this.height+"px";
                 
                 this.container.appendChild(this.div);
+
+                this.showInfo();
+            }
+
+            //현재 박스의 좌표 출력 
+            showInfo(){
+                this.div.innerText=`x:${this.x} \ny:${this.y}`;    
             }
         }
 
