@@ -50,6 +50,16 @@
             showInfo(){
                 this.div.innerText=`x:${this.x} \ny:${this.y}`;    
             }
+
+            //박스의 움직임 
+            move(x, y){
+                this.x =x;  //마우스의x좌표; 
+                this.y=y;   //마우스의y좌표;
+                
+                //rendering 
+                this.div.style.left=this.x+"px";
+                this.div.style.top=this.y+"px";
+            }
         }
 
         //사각형 두개를 생성하자
@@ -63,6 +73,13 @@
             wrapper =document.getElementById("wrapper");
 
             createBox();
+
+            //마우스 움직임 이벤트 연결 
+            document.body.addEventListener("mousemove", function(e){
+                //console.log("마우스 움직이고 있어?");
+                box1.move(e.clientX , e.clientY);
+            });
+
         });
     </script>
 </head>
