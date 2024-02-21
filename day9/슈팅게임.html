@@ -61,7 +61,7 @@
             for(let i=0; i<enemyFile.length;i++){
                 //container, src, direct, x, y, width, height,velX,velY
                 let direct = (i==1)? -1:1;
-                let enemy = new Enemy(wrapper, enemyFile[i],direct ,1200, 100*i, 50,50,-3, 0);
+                let enemy = new Enemy(wrapper, "../images/plane/"+enemyFile[i],direct ,1200, 100*i, 50,50,-3, 0);
 
                 //생성된 적군의 인스턴스를 배열에 추가하자 
                 enemyArray.push(enemy);
@@ -78,6 +78,10 @@
 
                 for(let i=0;i<bulletArray.length;i++){//총알이 존재할때만...
                     bulletArray[i].move();//총알의 move();
+                }
+                
+                for(let i=0;i<enemyArray.length;i++){
+                    enemyArray[i].move();
                 }
 
                 //info 영역에 실시간으로 총알의 수 출력 
