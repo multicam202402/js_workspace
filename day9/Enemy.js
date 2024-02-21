@@ -14,6 +14,7 @@ class Enemy{
 
         //style
         this.img.src=this.src;
+        this.img.style.transform=`scaleX(${this.direct})`;
 
         this.img.style.position="absolute";
         this.img.style.left=this.x+"px";
