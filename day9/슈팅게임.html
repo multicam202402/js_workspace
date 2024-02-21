@@ -9,6 +9,8 @@
             width:1280px;
             height:50px;
             margin: auto;
+            font-size:20px;
+            font-weight: bold;
         }
         #wrapper{
             width:1280px;
@@ -85,7 +87,9 @@
                 }
 
                 //info 영역에 실시간으로 총알의 수 출력 
-                let str="총알수: "+bulletArray.length+"\n";
+                let str="총알수: "+bulletArray.length+", ";
+                str += "적군수:"+enemyArray.length+", ";
+
                 info.innerText=str;
             }
         }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0px;
+        }
+        #wrapper{
+            width:100%;
+            height:900px;
+            background-color: aqua;
+        }
+    </style>
+    <script>
+        //박스를 정의한다 
+        class Box{
+            constructor(container, bg, x, y, width, height){
+                this.container=container;
+                this.div=document.createElement("div");
+                this.bg=bg;
+                this.x=x;
+                this.y=y;
+                this.width=width;
+                this.height=height;
+                
+                //style
+                this.div.style.background=this.bg;
+
+                this.div.style.position="absolute";
+                this.div.style.left=this.x+"px";
+                this.div.style.top=this.y+"px"; 
+
+                this.div.style.width=this.width+"px";
+                this.div.style.height=this.height+"px";
+                
+                this.container.appendChild(this.div);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="wrapper"></div>
+</body>
+</html>

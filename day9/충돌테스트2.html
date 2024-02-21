@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0px;
+        }
+        #wrapper{
+            width:100%;
+            height:900px;
+            background-color: aqua;
+        }
+    </style>
+    <script>
+        let wrapper;
+        let box1, box2;
+        let flag=false;
+
+        class Box{
+            constructor(container, bg, x, y,width, height){
+                this.container=container;
+                this.div=document.createElement("div");
+                this.bg=bg;
+                this.text;
+                this.x=x;
+                this.y=y;
+                this.width=width;
+                this.height=height;                
+
+                //style
+                this.div.style.background=this.bg;
+                this.div.style.fontSize=40+"px";
+                this.div.style.position="absolute";
+                this.div.style.left=this.x+"px";
+                this.div.style.top=this.y+"px";
+
+                this.div.style.width=this.width+"px";
+                this.div.style.height=this.height+"px";
+
+                this.showInfo();
+                this.container.appendChild(this.div);
+            }
+
+            showInfo(){
+                //좌표출력 
+                this.div.innerText=`x:${this.x}\n y:${this.y}`;
+            }
+            
+            collisionCheck(box1, box2){
+                //1사분면(북서) : ((box1.x+width) >= box2.x) && ((box1.y+box1.height) >= box2.y)
+                //2사분면(북동) : (box1.x <= (box2.x+box2.width)) && ((box1.y+box1.height) >=box2.y)
+                //3사분면(동남) : (box1.x <= (box2.x+box2.width)) && (box1.y <= (box2.y+box2.height))
+                //4사분면(남서) : ((box1.x+box1.width) >= box2.x )&&(box1.y <= (box2.y+box2.height))
+                let side1 =  ((box1.x+box1.width) >= box2.x) && ((box1.y+box1.height) >= box2.y);
+                let side2 =  (box1.x <= (box2.x+box2.width)) && ((box1.y+box1.height) >=box2.y);
+                let side3 =  (box1.x <= (box2.x+box2.width)) && (box1.y <= (box2.y+box2.height));
+                let side4 =  ((box1.x+box1.width) >= box2.x )&&(box1.y <= (box2.y+box2.height));
+
+                return (side1 && side2 && side3 && side4);
+            }
+
+            move( x, y){
+                this.x = x;
+                this.y = y;
+
+                this.showInfo();
+                
+                let result = this.collisionCheck(box1, box2);
+                if(result){
+                    this.div.style.background="yellow";
+                }else{
+                    this.div.style.background=this.bg;
+                }
+
+                this.div.style.left=this.x+"px";
+                this.div.style.top=this.y+"px";
+            }
+        }
+        
+        function createBox(){
+            box1 = new Box(wrapper, "red", 100,400,200,200);
+            box2 = new Box(wrapper, "green", 700,400,200,200);
+        }
+
+        addEventListener("load", function(){
+            wrapper = document.getElementById("wrapper");
+            createBox();
+
+            addEventListener("click", function(){
+                flag=!flag;                    
+            });
+
+            addEventListener("mousemove", function(e){
+                if(flag){
+                    box1.move( e.clientX, e.clientY);
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div id="wrapper"></div>
+</body>
+</html>
