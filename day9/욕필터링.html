@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*두개의 채팅창이 같은 너비, 높이 스타일을 가지므로, 공통의 클래스로 정의하여 
+        적용해보기
+        */
+        .chatWin{
+            width:300px;
+            height:400px;
+            border:3px solid gray;
+            border-radius: 5px;
+            background-color: aquamarine;
+            box-sizing: border-box; /*바깥쪽으로 크기에 영향을 주지 않음*/
+        }
+        #chat1{
+            position: absolute;
+            left:100px;
+            top:200px;
+        }
+        #chat2{
+            position: absolute;
+            left:600px;
+            top:200px;
+        }
+
+        textarea{
+            width:98%;
+            height:360px;
+            background-color: yellow;
+        }
+        input[type='text']{
+            width:98%;
+            height:25px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="wrapper">
+        <div class="chatWin" id="chat1">
+            <textarea></textarea>
+            <input type="text">
+        </div>
+        <div class="chatWin" id="chat2">
+            <textarea></textarea>
+            <input type="text">
+        </div>
+    </div>
+
+</body>
+</html>
