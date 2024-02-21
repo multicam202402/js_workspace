@@ -16,6 +16,7 @@
             background-image: url(../images/plane/game_bg.jpg);
             margin:auto;
             position: relative;
+            background-position: 0px  0px;
         }
     </style>
     <script src="./Hero.js"></script>
@@ -23,11 +24,19 @@
         let flag=true; //게임루프의 실행여부를 결정짓는 논리값 
         let info;
         let wrapper;
-        
+        let bgX=0; //배경이미지의 x좌표
+
+        //배경이미지의 x좌표를 이동시키자
+        function bgEffect(){
+            bgX--;
+            wrapper.style.backgroundPosition=bgX+"px  0px";
+        }
+
         //모든 요소가 움직이려면(에니메이셔 효과를 주려면), 루프가 필요하기 때문...
         function gameLoop(){
             if(flag){
                 //console.log("gameLoop called...");
+                bgEffect();
             }
         }
 
