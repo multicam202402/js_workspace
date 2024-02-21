@@ -32,6 +32,11 @@
             wrapper.style.backgroundPosition=bgX+"px  0px";
         }
 
+        function createHero(){
+            //container, src, x, y, width, height, velX, velY
+            let hero = new Hero(wrapper, "../images/plane/plane.png", 50,100,50,40,0,0);
+        }
+
         //모든 요소가 움직이려면(에니메이셔 효과를 주려면), 루프가 필요하기 때문...
         function gameLoop(){
             if(flag){
@@ -52,6 +57,9 @@
                 }
 
             });
+
+            //주인공 등장 
+            createHero();
 
             setInterval("gameLoop()", 10);
         });
