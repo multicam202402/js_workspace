@@ -17,6 +17,30 @@
             margin:auto;
         }
     </style>
+    <script>
+        let flag=true; //게임루프의 실행여부를 결정짓는 논리값 
+
+        //모든 요소가 움직이려면(에니메이셔 효과를 주려면), 루프가 필요하기 때문...
+        function gameLoop(){
+            if(flag){
+                console.log("gameLoop called...");
+            }
+        }
+
+        addEventListener("load", function(){
+
+            //키보드 이벤트연결 
+            document.body.addEventListener("keydown", function(e){
+                //조건을 따져볼 대상이 여러개인 경우 else~if switch 문 사용해본다 
+                switch(e.keyCode){
+                    case 27:flag=!flag;break;
+                }
+
+            });
+
+            setInterval("gameLoop()", 10);
+        });
+    </script>
 </head>
 <body>
     <div id="info">스테이지, 점수, 목숨수, 적군수, 총알수</div>
