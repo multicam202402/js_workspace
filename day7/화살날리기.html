@@ -7,31 +7,49 @@
     <script>
         //5개 이상의 화살이, 각각 다른 속도, 다른 색상, 다른 y축위치로 동작하게 코드작성...
         //감속도 운동은 필요없으며, 각각 다른 등속도 운동으로 움직이면 됩니다!~
-        let span;
-        let x=0; //좌표 
-        let velX=5; //속도
+        //결국 객체지향 언어(Object Oriented Programming) 는 신기술이 아니었다...
+        //그냥 기존의 변수와 함수의 조합으로 현실을 다루고자 했던 절차지향언어(C)에서 
+        //현실을 반영하는 방법만(즉 관점) 바꾼 것 뿐이다..
+        class Arrow{
+            //이 영역은,  Arrow의 내부 영역이므로, 자바스크립트에서는 클래스내에 선언된
+            //변수는 자기 것임을 무지 강조한다...
+            //단 js는 완벽한 OOP(java, c#)는 아니므로, 자기가 보유한 변수는 생성자라는
+            //함수내에 선언해야 한다..
+            //객체가 보유한 변수를 가리켜, 멤버변수라 한다.  property 속성이라고 한다 
+            //객체의 상태를 담고 있다고 하여 속성이라 한다..
+            constructor(){
+                //변수명 앞에 오는 .(점)은 전산에서 소유권을 나타낸다.
+                this.span;
+                this.x=0; //좌표 
+                this.y=0; //y좌표
+                this.velX=5; //속도
+            }
+            
+            //클래스내에 정의된 함수들은 사물의 동작 방법을 정의한다고 하여, 
+            //메서드라는 명칭으로 바뀐다
+            //화살을 생성한다
+            createArrow(){
+                this.span = document.createElement("span"); //<span></span>  inline
+                this.span.innerText="→"; //이미지가 아닌 텍스트 즉 특수 문자임  
+                this.span.style.color="red"; //폰트 색상을 빨간색으로 
+                this.span.style.position="absolute";
+                this.span.style.top=this.y+"px";
+                this.span.style.left=this.x+"px";
 
-        //화살을 생성한다
-        function createArrow(){
-            span = document.createElement("span"); //<span></span>  inline
-            span.innerText="→"; //이미지가 아닌 텍스트 즉 특수 문자임  
-            span.style.color="red"; //폰트 색상을 빨간색으로 
-            span.style.position="absolute";
-            span.style.top=100+"px";
-            span.style.left=0+"px";
+                document.body.appendChild(this.span);
+            }
 
-            document.body.appendChild(span);
+            //생성된 화살을 날려보자
+            move(){
+                this.x = this.x + this.velX; 
+                this.span.style.left=this.x+"px";
+            }
         }
 
-        //생성된 화살을 날려보자
-        function move(){
-            x = x + velX; 
-            span.style.left=x+"px";
-        }
 
         function init(){
-            createArrow();
-            setInterval("move()", 10);
+            //createArrow();
+            //setInterval("move()", 10);
         }
     </script>
 </head>
