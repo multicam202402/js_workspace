@@ -38,7 +38,9 @@
         }
     </style>
     <script>
-
+        
+        let bad=["개새끼","십팔놈", "육시럴"];//욕 데이터베이스 
+        let good=["강아지","낭랑18세","흥"];//순화 데이터베이스
 
         addEventListener("load", function(){
             
@@ -50,10 +52,10 @@
             keyInput[0].addEventListener("keyup", function(e){
                 if(e.keyCode==13){
                     //1)채팅 메시지를 상대방에 출력 
-                    log[1].append(this.value+"\n"); //상대방인 우측 textarea에 문자열 누적
+                    log[1].append("A님말 : "+this.value+"\n"); //상대방인 우측 textarea에 문자열 누적
 
                     //2) 나의 textare에 기록을 남기기   
-                    log[0].append(this.value+"\n");  
+                    log[0].append("나의말 : "+this.value+"\n");  
 
                     //입력한 텍스트는 다시 초기화 
                     this.value="";
@@ -64,10 +66,10 @@
             keyInput[1].addEventListener("keyup", function(e){
                 if(e.keyCode==13){
                     //1)채팅 메시지를 상대방에 출력 
-                    log[0].append(this.value+"\n"); //상대방인 좌측 textarea에 문자열 누적
+                    log[0].append("B님말 : "+this.value+"\n"); //상대방인 좌측 textarea에 문자열 누적
 
                     //2) 나의 textare에 기록을 남기기   
-                    log[1].append(this.value+"\n");  
+                    log[1].append("나의말 : "+this.value+"\n");  
 
                     //입력한 텍스트는 다시 초기화 
                     this.value="";
