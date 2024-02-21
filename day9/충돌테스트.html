@@ -60,9 +60,13 @@
                 let side2 = (box1.x <= (box2.x+box2.width)) && ((box1.y+box1.height) >= box2.y);
 
                 //우측하단 모서리(동남) 3사분면 
+                let side3 = (box1.x <= (box2.x+box2.width)) && (box1.y <=(box2.y+box2.height));
 
                 //좌측하단 모서리(서남) 4사분면
-                
+                let side4 = ( (box1.x+box1.width) >= box2.x ) && (box1.y <=(box2.y+box2.height));
+
+                //모든 사분면이 true 값일때, 전체를 true본다 즉 충돌로 본다    
+                return (side1 && side2 && side3 && side4);
             }
 
 
@@ -72,8 +76,15 @@
                 this.y=y;   //마우스의y좌표;
 
                 this.showInfo();
-
                 
+                //변경된  this.x, this.y  값에 대하여 실시간 충돌체크를 계속 진행하자 
+                let result = this.collisionCheck();
+
+                if(result){ //충돌일때
+                    this.div.style.background="yellow";
+                }else{//아닐때
+                    this.div.style.background=this.bg;
+                }
 
                 //rendering 
                 this.div.style.left=this.x+"px";
