@@ -52,11 +52,29 @@
                 this.div.innerText=`x:${this.x} \ny:${this.y}`;    
             }
 
+            collisionCheck(){
+                //좌측상단 모서리(북서)1사분면
+                let side1 = ((box1.x+box1.width) >= box2.x) && ((box1.y+box1.height) >= box2.y);
+
+                //우측상단 모서리 (북동) 2사분면
+                let side2 = (box1.x <= (box2.x+box2.width)) && ((box1.y+box1.height) >= box2.y);
+
+                //우측하단 모서리(동남) 3사분면 
+
+                //좌측하단 모서리(서남) 4사분면
+                
+            }
+
+
             //박스의 움직임 
             move(x, y){
                 this.x =x;  //마우스의x좌표; 
                 this.y=y;   //마우스의y좌표;
+
+                this.showInfo();
+
                 
+
                 //rendering 
                 this.div.style.left=this.x+"px";
                 this.div.style.top=this.y+"px";
@@ -75,7 +93,7 @@
 
             createBox();
 
-            box1.addEventListener("click", function(){
+            box1.div.addEventListener("click", function(){
                 flag = !flag;
             });
 
