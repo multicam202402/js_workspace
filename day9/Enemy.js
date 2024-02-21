@@ -25,4 +25,12 @@ class Enemy{
 
         this.container.appendChild(this.img);
     }
+
+    move(){
+        this.x += this.velX;
+        this.y += this.velY;
+
+        this.img.style.left=this.x+"px";
+        this.img.style.top=this.y+"px";        
+    }
 }

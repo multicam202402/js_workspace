@@ -30,7 +30,9 @@
         let bgX=0; //배경이미지의 x좌표
         let hero;
         let bulletArray=[]; //다수의 총알이 담겨져야 하므로, 배열로 선언
+        let enemyArray=[]; //다수의 적군을 담아야 하므로, 배열로 선언
 
+        let enemyFile=["e1.png","e2.webp","e3.webp","e4.webp"];
 
         //배경이미지의 x좌표를 이동시키자
         function bgEffect(){
@@ -52,6 +54,18 @@
             let bullet = new Bullet(wrapper, x, y, 20,16,8,0);
             
             bulletArray.push(bullet);//생성된 총알 인스턴스를 배열에 담자
+        }
+
+        //적군 생성 
+        function createEnemy(){
+            for(let i=0; i<enemyFile.length;i++){
+                //container, src, direct, x, y, width, height,velX,velY
+                let direct = (i==1)? -1:1;
+                let enemy = new Enemy(wrapper, enemyFile[i],direct ,1200, 100*i, 50,50,-3, 0);
+
+                //생성된 적군의 인스턴스를 배열에 추가하자 
+                enemyArray.push(enemy);
+            }
         }
 
         //모든 요소가 움직이려면(에니메이셔 효과를 주려면), 루프가 필요하기 때문...
@@ -100,8 +114,9 @@
                 }
             });
 
-            //주인공 등장 
-            createHero();
+           
+            createHero(); //주인공 등장 
+            createEnemy(); //적군 등장
 
             setInterval("gameLoop()", 10);
         });
