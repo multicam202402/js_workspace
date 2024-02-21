@@ -45,7 +45,7 @@ class Bullet{
                 bulletArray.splice( bulletArray.indexOf(this) , 1 );
 
                 //(적군)너죽고(화면제거 + 배열에서 제거)
-                wrapper.removeChild(enemyArray[i].div);
+                wrapper.removeChild(enemyArray[i].img);
                 enemyArray.splice(i , 1);
             }
         }
