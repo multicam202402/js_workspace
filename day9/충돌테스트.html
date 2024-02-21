@@ -18,6 +18,7 @@
     <script>
         let wrapper;
         let box1, box2;
+        let flag=false; //박스를 움직일지 여부를 결정짓는 논리값 
 
         //박스를 정의한다 
         class Box{
@@ -74,10 +75,16 @@
 
             createBox();
 
+            box1.addEventListener("click", function(){
+                flag = !flag;
+            });
+
             //마우스 움직임 이벤트 연결 
             document.body.addEventListener("mousemove", function(e){
                 //console.log("마우스 움직이고 있어?");
-                box1.move(e.clientX , e.clientY);
+                if(flag){
+                    box1.move(e.clientX , e.clientY);
+                }
             });
 
         });
