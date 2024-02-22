@@ -37,6 +37,7 @@
             height:25px;
         }
     </style>
+    <script src="../js/lib.js"></script>
     <script>
         
         let bad=["개새끼","십팔놈", "육시럴"];//욕 데이터베이스 
@@ -51,11 +52,21 @@
             //좌측 텍스트박스에 입력이 일어나면..
             keyInput[0].addEventListener("keyup", function(e){
                 if(e.keyCode==13){
+
+                    //메시지 처리 하기 전에 , 필터링 적용해보자 
+                    //let str = this.value; //  "나는 사과와 딸기와 포도를 좋아한다"
+
+                    //for(let i=0;i<bad.length;i++){ //욕 데이터베이스 만큼...
+                        //"야이 강아지야 너 십XX 아 , 에잇 육XX ""
+                       // str = str.replace(bad[i] , good[i]);                                                     
+                    //}
+                    let str=filterLang(this.value, bad, good);
+
                     //1)채팅 메시지를 상대방에 출력 
-                    log[1].append("A님말 : "+this.value+"\n"); //상대방인 우측 textarea에 문자열 누적
+                    log[1].append("A님말 : "+str+"\n"); //상대방인 우측 textarea에 문자열 누적
 
                     //2) 나의 textare에 기록을 남기기   
-                    log[0].append("나의말 : "+this.value+"\n");  
+                    log[0].append("나의말 : "+str+"\n");  
 
                     //입력한 텍스트는 다시 초기화 
                     this.value="";
@@ -65,11 +76,14 @@
             //우측 텍스트박스에 입력이 일어나면..
             keyInput[1].addEventListener("keyup", function(e){
                 if(e.keyCode==13){
+
+                    let str=filterLang(this.value, bad, good);
+
                     //1)채팅 메시지를 상대방에 출력 
-                    log[0].append("B님말 : "+this.value+"\n"); //상대방인 좌측 textarea에 문자열 누적
+                    log[0].append("B님말 : "+str+"\n"); //상대방인 좌측 textarea에 문자열 누적
 
                     //2) 나의 textare에 기록을 남기기   
-                    log[1].append("나의말 : "+this.value+"\n");  
+                    log[1].append("나의말 : "+str+"\n");  
 
                     //입력한 텍스트는 다시 초기화 
                     this.value="";
