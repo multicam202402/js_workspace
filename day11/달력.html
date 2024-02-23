@@ -56,7 +56,7 @@
         function createDayCell(){
             //container, x, y, width, height, content
             for(let i=0;i<dayTitleArray.length;i++){
-                let cell = new Cell(dayTitle, i*cellSize, 0, cellSize, 50, dayTitleArray[i]);
+                let cell = new Cell(dayTitle, i*cellSize, 0, cellSize, 50, dayTitleArray[i], "");
                 cell.div.style.lineHeight=50+"px";
                 cell.div.style.textAlign="center";
             }
@@ -68,7 +68,7 @@
                 let arr=[];
                 for(let j=0; j<dayTitleArray.length;j++){ //호수
                     //container, x, y, width, height, content
-                    let cell = new Cell(content, j*cellSize, i*cellSize, cellSize, cellSize, "x");
+                    let cell = new Cell(content, j*cellSize, i*cellSize, cellSize, cellSize, "x", "../images/mario/mario.webp");
                     arr.push(cell); //일차원 배열에 담기
                 }
                 cellArray.push(arr); //층수만큼 일차원 배열인 arr을 넣기
@@ -80,8 +80,11 @@
             let span = document.querySelector("#header span");
             let yy=currentDate.getFullYear(); //현재 연도
             let mm=currentDate.getMonth(); //현재 월  0 부터 시작
+            
+            let n=mm+1;
+            let str = ( n<10 )?  "0"+n : n;
 
-            span.innerText=`${yy}년 ${mm+1}월`;
+            span.innerText=`${yy}년 ${str}월`;
         }
 
         //이차원 배열의 각각의 셀에 날짜를 출력하기
