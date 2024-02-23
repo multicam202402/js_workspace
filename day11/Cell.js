@@ -24,4 +24,9 @@ class Cell{
         this.div.innerText = this.content;
         this.container.appendChild(this.div);
     }
+
+    setContent(content){
+        this.content=content;  // x += this.velX;
+        this.div.innerText= this.content; //렌더링
+    }
 }
