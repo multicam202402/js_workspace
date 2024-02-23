@@ -43,6 +43,36 @@
             position: relative;
         }
     </style>
+    <script src="./Cell.js"></script>
+    <script>
+        let wrapper;
+        let dayTitle; //요일이 들어갈 div
+
+        let cellSize=100; //셀의 크기(얘네들이 모여서 달력의 크기를 결정)
+        let dayTitleArray=["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
+
+        function createDayCell(){
+            //container, x, y, width, height, content
+            for(let i=0;i<dayTitleArray.length;i++){
+                let cell = new Cell(dayTitle, i*cellSize, 0, cellSize, 50, dayTitleArray[i]);
+            }
+        }
+
+        function init(){
+            //달력 크기의 동적 변경 
+            wrapper.style.width = cellSize * 7+"px"; //달력의 너비 
+            wrapper.style.height = cellSize * 6+(70+50)+"px";
+        }
+
+        addEventListener("load", function(){
+            wrapper = document.getElementById("wrapper");
+            dayTitle = document.getElementById("dayTitle");
+            
+            init();
+            createDayCell(); //요일 생성 
+        });
+
+    </script>
 </head>
 <body>
     
