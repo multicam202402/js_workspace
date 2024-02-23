@@ -55,6 +55,8 @@
             //container, x, y, width, height, content
             for(let i=0;i<dayTitleArray.length;i++){
                 let cell = new Cell(dayTitle, i*cellSize, 0, cellSize, 50, dayTitleArray[i]);
+                cell.div.style.lineHeight=50+"px";
+                cell.div.style.textAlign="center";
             }
         }
 
@@ -82,7 +84,7 @@
             <span>2019년 03월</span>
             <button>▶</button>
         </div>
-        <div id="dayTitle">요일 나올곳</div>
+        <div id="dayTitle"></div>
         <div id="content">달력의 셀이 출력될 곳</div>
     </div>
 
