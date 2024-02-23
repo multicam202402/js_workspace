@@ -39,7 +39,6 @@
         #content{
             width:100%;
             height:100%;
-            background-color: blueviolet;
             position: relative;
         }
     </style>
@@ -47,9 +46,12 @@
     <script>
         let wrapper;
         let dayTitle; //요일이 들어갈 div
+        let content; //달력의 날짜 셀들이 들어갈 div
 
         let cellSize=100; //셀의 크기(얘네들이 모여서 달력의 크기를 결정)
         let dayTitleArray=["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
+        let cellArray=[]; // 이차원 배열
+        let currentDate; //현재 사용자가 보고 있는 날짜
 
         function createDayCell(){
             //container, x, y, width, height, content
@@ -60,18 +62,55 @@
             }
         }
 
+        function createNumCell(){
+            for(let i=0;i<6;i++){ //층수
+                
+                let arr=[];
+                for(let j=0; j<dayTitleArray.length;j++){ //호수
+                    //container, x, y, width, height, content
+                    let cell = new Cell(content, j*cellSize, i*cellSize, cellSize, cellSize, "x");
+                    arr.push(cell); //일차원 배열에 담기
+                }
+                cellArray.push(arr); //층수만큼 일차원 배열인 arr을 넣기
+            }
+        }
+
+        //달력의 제목을 출력하는 함수 
+        function printTitle(){
+            let span = document.querySelector("#header span");
+            let yy=currentDate.getFullYear(); //현재 연도
+            let mm=currentDate.getMonth(); //현재 월  0 부터 시작
+
+            span.innerText=`${yy}년 ${mm+1}월`;
+        }
+
+
+        //해당 월이 무슨 요일부터 시작하는지를 알려주는 함수 
+        function getStartDayOfWeek(){
+            //let d = new Date();
+        }
+
         function init(){
             //달력 크기의 동적 변경 
             wrapper.style.width = cellSize * 7+"px"; //달력의 너비 
             wrapper.style.height = cellSize * 6+(70+50)+"px";
+
+            content.style.height=cellSize*6+"px";
+
         }
 
         addEventListener("load", function(){
             wrapper = document.getElementById("wrapper");
             dayTitle = document.getElementById("dayTitle");
+            content = document.getElementById("content");
             
             init();
+            
+            currentDate  =new Date(); 
+            printTitle();
+
             createDayCell(); //요일 생성 
+            createNumCell(); //날짜 셀 만들기
         });
 
     </script>
@@ -85,7 +124,7 @@
             <button>▶</button>
         </div>
         <div id="dayTitle"></div>
-        <div id="content">달력의 셀이 출력될 곳</div>
+        <div id="content"></div>
     </div>
 
 </body>
