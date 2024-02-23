@@ -151,6 +151,22 @@
             currentDate  =new Date(); 
             printTitle();
             printNum();
+
+            let btn = document.getElementsByName("btn"); //배열이니깐..
+            
+            btn[0].addEventListener("click", function(){
+                currentDate.setMonth(currentDate.getMonth()-1);
+                printTitle(); //제목변경 
+                printNum(); //날짜 다시 출력
+            });
+
+            btn[1].addEventListener("click", function(){
+                //다음 월로 변경
+                currentDate.setMonth(currentDate.getMonth()+1);
+                printTitle(); //제목변경 
+                printNum(); //날짜 다시 출력
+            });
+
         });
 
     </script>
