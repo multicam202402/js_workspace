@@ -133,8 +133,13 @@
             marker.setMap(map);
 
             //정보 윈도우 띄우기 
+            //링크를 포함한 정보 만들기 
+            let tag = obj.msg;
+            tag+= obj.msg+"<br>";
+            tag+="<a href='"+obj.url+"'>바로가기</a>";
+
             var infowindow = new google.maps.InfoWindow({
-                content: obj.msg
+                content: tag
             });
             infowindow.open(map, marker);
         }
@@ -179,8 +184,8 @@
             pos.addEventListener("blur", function () {
                 //pos에 입력한 위도,경도 문자열을 쉼표를 기준으로 분리시키자 
                 let arr = this.value.split(",");
-                lati.value = arr[0];
-                longi.value = arr[1];
+                lati.value = arr[0].trim(); //공백이 있다면 제거
+                longi.value = arr[1].trim(); //공백이 있다면 제거
             });
 
             //선택상자에 값이 바뀐 값으로 이미지 미리보기 구현 
