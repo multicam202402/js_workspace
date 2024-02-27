@@ -16,11 +16,13 @@
     <script src="./GameObject.js"></script>
     <script src="./Hero.js"></script>
     <script src="./Bullet.js"></script>
+    <script src="./Enemy.js"></script>
     <script>
         let wrapper;
         let bgY=0;
         let hero;
-        let bulletArray=[]; //생성된 총알들을 담게될 배열 
+        let bulletArray=[]; //생성된 총알들을 담게 될 배열 
+        let enemyArray=[]; //생성된 적군들을 담게 될 배열 
 
         function init(){
             wrapper=document.getElementById("wrapper");
@@ -35,6 +37,12 @@
             hero = new Hero(wrapper, "../images/Gallerxy/ship.png", 450, 700, 50,50,0,0);
         }
         
+        function createEnemy(){
+            for(let i=0;i<20;i++){
+                let enemy = new Enemy(wrapper, "../images/Gallerxy/enemy1.png", 100+(i*40), 200, 35,35,0,0);
+            }
+        }
+
         function fire(){
             //총알의 인스턴스를 생성하여, 움직여야 하므로 배열에 담아놓고
             //집단으로 반복문 돌려서 해당 총알의 move() 호출 
@@ -54,7 +62,10 @@
 
         addEventListener("load", function(){
             init();
+            
             createHero();//주인공 생성
+            createEnemy();//적군 생성 
+
             setInterval("gameLoop()", 10);
             
             //키보드 이벤트 연결 
