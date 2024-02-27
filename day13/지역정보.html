@@ -1,0 +1,137 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #wrapper {
+                width: 1500px;
+                height: 900px;
+                background-color: aquamarine;
+                margin: auto;
+            }
+
+            #aside {
+                width: 200px;
+                height: 100%;
+                background-color: bisque;
+                float: left;
+            }
+
+            #aside * {
+                width: 98%;
+                height: 35px;
+                background-color: aquamarine;
+                margin-top: 3px;
+            }
+
+            #content {
+                width: 800px;
+                height: 100%;
+                background-color: yellow;
+                float: left;
+            }
+
+            #list {
+                width: 500px;
+                height: 100%;
+                background-color: burlywood;
+                float: left;
+            }
+        </style>
+        <script>
+            /*
+            var 자바스크립트의 변수 선언시 앞에 명시하는 키워드 
+            - 단점: 중복 선언이 가능, 호이스팅 현상이 발생함         
+            - 호이스팅 현상이란 var 선언된 변수는 전역변수화 됨 
+            {
+                var x=5;
+            }
+            console.log(x); 프로그래밍 언어의 보편적 원칙상 x 는 이미 소멸되어야 하지만
+            자바스크립트에서는 global 객체에 등록되므로, 즉 전역변수 처럼 돼버린다.
+            ES6(2015년에 발표된  ECMAScript 2015 ) 에서 자바스크립트 언어에 큰 변화가 있었슴
+            - let : 변수의 중복 선언 불허, class 등등.. 
+            
+            변수 선언의 종류 
+            - var 
+            - let 
+            - const (constant 란 뜻의 상수 선언시 사용)
+            */
+            //const w=9; //w는 고정되어 버린다. 즉 변수가 아닌 상수가 되어 버린다.
+            //w=4; //따라서 위 상수 선언 이후의 변경은 불가
+            //어느때 사용? 값이 변경될 가능성이 적을 경우 
+            
+            /*
+            DOM( Document Object Model) : 문서의 모든 태그를 본떠 만든 객체
+            즉 문서의 모든 태그마다 1:1 대응되는 객체를 생성하여 일반적인 응용프로그래밍 
+            언어가 간접적으로 HTML 문서를 제어할 수 있도록 지원되는 기술 
+            DOM을 이루고 있는 모든 객체들은 객체이기 때문에 속성,메서드를 가질 수 있다는
+            원칙으로 ApI문서를 사용하면 도움 됨..
+
+            개발자가 DOM을 제어하면, 이 정보를 이용하여 DoM이 tag 결과를 반영한다
+            */
+
+            let iconArray=["apple.webp","banana.webp","cherry.webp","grape.webp","lemon.webp","orange.webp"];
+
+            //select 박스에 option 태그 요소를 동적으로 생성하여 부착 
+            function createIcon(){
+                let sel = document.getElementById("sel");
+                
+                //자식 요소인 option dom 생성 
+                for(let i=0;i<iconArray.length;i++){
+                    let op = document.createElement("option"); // option 태그에 대한 dom 생성 
+                    op.text=iconArray[i];
+                    sel.add(op);
+                }
+            }
+
+            function init() {
+                //아이콘 채우기 
+                createIcon();
+
+                var mapProp = {
+                    center: new google.maps.LatLng(51.508742, -0.120850),
+                    zoom: 18,
+                };
+                document.getElementsByName
+                document.getElementsByTagNameNS
+
+                var map = new google.maps.Map(document.getElementById("content"), mapProp);
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <div id="aside">
+                <!-- 
+                    form 태그란? 입력 양식들(입력 컴포넌트 들)의 양식의 전송 범위를 설정하는 태그
+                    주 목적은 입력한 내용들을 서버로 전송하는 역할 (시각적으로 보이지 않음)
+                    현재 우리는, 이 기능이 필요없지만 미래를 위해 알아두자
+                -->
+                <form name="form1">
+                    <input type="text" placeholder="위도, 경도 입력">
+                    <input type="text" placeholder="위도">
+                    <input type="text" placeholder="경도">
+
+                    <input type="text" placeholder="메시지">
+                    <input type="text" placeholder="URL">
+
+                    <select id="sel">
+                        <option value="">아이콘 선택</option>
+                    </select>
+
+                    <button>정보등록</button>
+                </form>
+
+            </div>
+            <div id="content"></div>
+            <div id="list"></div>
+        </div>
+    </body>
+
+    </html>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7T1zxqexhKQVJADn8557SvlM_bHLoYas&callback=init"></script>
