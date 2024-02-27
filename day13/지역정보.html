@@ -122,7 +122,10 @@
         function render(obj) { //지금 등록한 상점 정보를 json 객체로 전달받자
             //맵에 마커 추가하기 
             let latiLongi = new google.maps.LatLng( obj.lati, obj.longi); //등록할 상점의 위도와 경도 
-            var marker = new google.maps.Marker({ position: latiLongi });
+            var marker = new google.maps.Marker({ 
+                position: latiLongi , 
+                animation:google.maps.Animation.BOUNCE
+            });
             marker.setMap(map);
         }
 
