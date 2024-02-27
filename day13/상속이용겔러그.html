@@ -14,13 +14,19 @@
     </style>
     <script>
         let wrapper;
+        let bgY=0;
 
         function init(){
             wrapper=document.getElementById("wrapper");
         }
         
+        function bgEffect(){
+            bgY++;
+            wrapper.style.backgroundPosition=`0px   ${bgY}px`;
+        }
+
         function gameLoop(){
-            console.log("gameLoop called...");
+            bgEffect(); //배경효과
         }
 
         addEventListener("load", function(){
