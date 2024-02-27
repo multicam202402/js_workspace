@@ -77,10 +77,11 @@
             let pos;
             let lati;
             let longi; 
+            let sel;
 
             //select 박스에 option 태그 요소를 동적으로 생성하여 부착 
             function createIcon(){
-                let sel = document.getElementById("sel");
+                sel = document.getElementById("sel");
                 
                 //자식 요소인 option dom 생성 
                 for(let i=0;i<iconArray.length;i++){
@@ -107,7 +108,16 @@
                     let arr = this.value.split(","); 
                     lati.value=arr[0];
                     longi.value=arr[1];
-                });                                
+                });           
+                
+                //선택상자에 값이 바뀐 값으로 이미지 미리보기 구현 
+                //change 이벤트는 기존의 값과는 다른 값으로 변경될때에 발생하는 이벤트
+                sel.addEventListener("change", function(){
+                    let preview = document.getElementById("preview");
+                    console.log("선택하신 아이콘의 경로는 ", this.value);
+                    preview.src=this.value;
+                });
+
 
             }
 
@@ -145,6 +155,8 @@
                     <select id="sel">
                         <option value="">아이콘 선택</option>
                     </select>
+                    
+                    <img id="preview" style="height:150px">
 
                     <button>정보등록</button>
                 </form>
