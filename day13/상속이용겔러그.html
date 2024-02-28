@@ -65,8 +65,14 @@
             bgEffect(); //배경효과
             hero.move();
             
+            //총알 움직이기 
             for(let i=0;i<bulletArray.length;i++){
                 bulletArray[i].move();
+            }
+
+            //녹색왕파리 움직이기 
+            for(let i=0;i<greenKingArray.length;i++){
+                greenKingArray[i].move(); //오버라이드 된 자식의 메서드가 동작!!
             }
         }
 
