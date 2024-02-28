@@ -17,12 +17,14 @@
     <script src="./Hero.js"></script>
     <script src="./Bullet.js"></script>
     <script src="./Enemy.js"></script>
+    <script src="./KingEnemy.js"></script>
     <script>
         let wrapper;
         let bgY=0;
         let hero;
         let bulletArray=[]; //생성된 총알들을 담게 될 배열 
         let enemyArray=[]; //생성된 적군들을 담게 될 배열 
+        let greenKingArray=[];
 
         function init(){
             wrapper=document.getElementById("wrapper");
@@ -38,8 +40,16 @@
         }
         
         function createEnemy(){
+            //빨간 졸병
             for(let i=0;i<20;i++){
                 let enemy = new Enemy(wrapper, "../images/Gallerxy/enemy1.png", 100+(i*40), 200, 35,35,0,0);
+            }
+
+            //보스 파리 
+            //container, src, x, y, width, height,velX,velY, r, velR
+            for(let i=0; i<10;i++){
+                let king = new KingEnemy(wrapper, "../images/Gallerxy/green_king.png", 200+(i*55), 140, 50,50, 0,0,0,2);
+                greenKingArray.push(king); //대왕파리 배열에 추가
             }
         }
 
