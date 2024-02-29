@@ -50,13 +50,14 @@
             background-color: aquamarine;
             line-height: 100px;
             position: relative;
+            overflow: hidden;
         }
     </style>
     <script src="./data.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./Photo.js"></script>
     <script>
-        let header, aside, content, footer;
+        let header, aside, content, footer, box;
 
         //addEventListener("load", function(){}); 동일
         /*
@@ -72,15 +73,39 @@
         
         //footer에 붙여질 썸네일 생성하기 
         function createThumb() {
-            //container, src, x, y, width, height
+            //박스의 스타일 설정(이미지의 수에 의존하므로, 프로그래밍적으로 처리)
+            const imgCount=movie.marvel.length; //값이 고정됨
+            const width=100; //값이 고정됨
 
+            $(box).css({
+                "position":"absolute",
+                "left":"0px",
+                "top":"0px",
+                "width":`${imgCount * width}px`,
+                "height":"100px"
+            });
+
+            //container, src, x, y, width, height
             //영화수 만큼 반복문으로 썸네일 만들기 
             for(let i=0;i<movie.marvel.length;i++){
                 let url = movie.marvel[i].url;
 
-                let photo = new Photo(footer, url, i*100, 0, 100,100);
+                let photo = new Photo(box, url, i*100, 0, 100,100);
                 
             }
+        }
+
+        //감속도 공식으로 움직이는 페이지 효과
+        //나의 위치 = 현위치 + 비율계수*(남은거리)
+        function pageMove(){
+
+        }
+
+        //페이지를 보여주는 함수(1page 일때는 box의 좌표를 음수방향, 2page는 양수방향)
+        function showPage(x){
+            $(box).css({
+                "left":x+"px"
+            });
         }
 
         $(function () {
@@ -88,8 +113,19 @@
             aside = document.getElementById("aside");
             content = document.getElementById("content");
             footer = document.getElementById("footer");
+            box = document.getElementById("box");
             
             createThumb();
+
+            //키보드 이벤트 연결 
+            $(document).keydown(function(e){
+                
+                switch(e.keyCode){
+                    case 37:showPage(-1000);break; //이전 페이지
+                    case 39:showPage(0);break; //다음 페이지
+                }
+
+            });
         });
 
     </script>
@@ -103,7 +139,9 @@
             <div id="aside"></div>
             <div id="content"></div>
         </div>
-        <div id="footer"></div>
+        <div id="footer">
+            <div id="box"></div>
+        </div>
     </div>
 
 </body>

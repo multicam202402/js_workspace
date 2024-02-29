@@ -19,6 +19,10 @@ class Photo{
         this.img.style.width=this.width+"px";
         this.img.style.height=this.height+"px";
 
+        //이미지에 테두리 적용 ( box에 의하면 border, margin, padding 등은 크기에 영향)
+        this.img.style.border="2px solid yellow";
+        this.img.style.boxSizing="border-box";
+
         this.container.appendChild(this.img);
     }
 }
