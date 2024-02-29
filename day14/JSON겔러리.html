@@ -49,19 +49,47 @@
             height: 100px;
             background-color: aquamarine;
             line-height: 100px;
+            position: relative;
         }
     </style>
     <script src="./data.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./Photo.js"></script>
     <script>
+        let header, aside, content, footer;
 
         //addEventListener("load", function(){}); 동일
         /*
+        Jquery 란? 자바스크립트 라이브러리 
+        왜쓰나? 코드의 간략화
+        필수? 업무효율성, 공동작업시 Jquery 기반의 코드多         
         JQuery가 배우기 쉬운 이유는, 문법 구문(syntax)이 아래와 같이 단순한 구조 
         구조:   $(누구를).어떻게()
-        */
         $(document).ready(function () {
             alert("문서 로드 했어");
+        });
+        */
+        
+        //footer에 붙여질 썸네일 생성하기 
+        function createThumb() {
+            //container, src, x, y, width, height
+
+            //영화수 만큼 반복문으로 썸네일 만들기 
+            for(let i=0;i<movie.marvel.length;i++){
+                let url = movie.marvel[i].url;
+
+                let photo = new Photo(footer, url, i*100, 0, 100,100);
+                
+            }
+        }
+
+        $(function () {
+            header = document.getElementById("header");
+            aside = document.getElementById("aside");
+            content = document.getElementById("content");
+            footer = document.getElementById("footer");
+            
+            createThumb();
         });
 
     </script>
