@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        #info{
+            width: 1000px;
+            height:40px;
+            margin: auto;
+            background-color: yellow;
+        }
         #wrapper{
             width: 1000px;
             height: 800px;
@@ -16,6 +22,7 @@
     <script src="./Snow.js"></script>
     <script src="../js/lib.js"></script>
     <script>
+        let info;
         let wrapper;
         let snowArray=[]; //다수의 눈을 보관하기 위해서 배열로 선언
         let count=0; //눈을 만들때, 시간지체를 위한 변수
@@ -36,6 +43,14 @@
             
             //생성된 눈의 인스턴스 한개를 배열에 추가하자 
             snowArray.push(snow);
+
+        }
+        
+        /*----------------------------------------------------
+        현재 눈 배열 상태를 파악할 수 있는 정보 출력
+        ----------------------------------------------------*/
+        function showLog(){
+            info.innerText="현재 눈꽃송이 수는 "+snowArray.length;
         }
 
         function gameLoop(){
@@ -51,9 +66,11 @@
                     snowArray[i].move();
                 }
             }
+            showLog();
         }
         
         addEventListener("load", function(){
+            info = document.getElementById("info");
             wrapper = document.getElementById("wrapper");
 
             setInterval("gameLoop()", 30);
@@ -70,6 +87,7 @@
     </script>
 </head>
 <body>
+    <div id="info"></div>        
     <div id="wrapper"></div>
 </body>
 </html>

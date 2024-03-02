@@ -37,8 +37,15 @@ class Snow{
         this.y += this.velY;
 
         //x와 y축값이 화면을 벗어나면, 굳이 존재시킬 필요가 없다 
-        //1) 화면에서 제거 
-        //2) 배열에서 삭제 
+        if(this.x >1000 || this.y >800){
+            //1) 화면에서 제거 
+            this.container.removeChild(this.div);
+    
+            //2) 배열에서 삭제
+            let index = snowArray.indexOf(this); 
+            snowArray.splice( index ,1);
+
+        }
 
         //화면에 보여질 처리(랜더링)
         this.div.style.top=this.y+"px";
